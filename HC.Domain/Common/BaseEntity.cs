@@ -1,18 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace HC.Domain.Common
+namespace HC.Domain.Common;
+
+public abstract class BaseEntity
 {
-    public abstract class BaseEntity
+    [Key]
+    public Guid Id { get; init; }
+    public Guid CreatedBy { get; set; }
+    public DateTime CreatedOn { get; private set; }
+    public Guid LastModifiedBy { get; set; }
+    public DateTime? LastModifiedOn { get; set; }
+    public DateTime? DeletedOn { get; set; }
+    public Guid? DeletedBy { get; set; }
+
+    protected BaseEntity()
     {
-        [Key]
-        public Guid Id { get; init; }
-
-
-        public bool IsDeleted { get; set; } = false;
+        Id = Guid.NewGuid();
+        CreatedOn = DateTime.UtcNow;
+        LastModifiedOn = DateTime.UtcNow;
     }
 }
+

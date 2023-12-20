@@ -1,30 +1,11 @@
-﻿using AutoWrapper.Wrappers;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Net;
 
-namespace HC.Application.Common.Exceptions
+namespace HC.Application.Common.Exceptions;
+
+public class UnauthorizedException : CustomException
 {
-    public class UnauthorizedException : BaseHttpException
+    public UnauthorizedException(string message)
+       : base(message, null, HttpStatusCode.Unauthorized)
     {
-        private readonly static int statusCode = StatusCodes.Status401Unauthorized;
-        public UnauthorizedException(object customError) : base(customError, statusCode)
-        {
-        }
-
-        public UnauthorizedException(IEnumerable<ValidationError> errors) : base(errors, statusCode)
-        {
-        }
-
-        public UnauthorizedException(Exception ex) : base(ex, statusCode)
-        {
-        }
-
-        public UnauthorizedException(string message, string errorCode = null, string refLink = null) : base(message, statusCode, errorCode, refLink)
-        {
-        }
     }
 }
