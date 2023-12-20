@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.8.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.14" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="7.0.14" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.14" />
@@ -16,11 +17,13 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="7.0.4" />
+    <PackageReference Include="Serilog" Version="3.1.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HC.Application\HC.Application.csproj" />
-    <ProjectReference Include="..\HC.Domain\HC.Domain.csproj" />
+    <ProjectReference Include="..\Core\HC.Application\HC.Application.csproj" />
+    <ProjectReference Include="..\Core\HC.Domain\HC.Domain.csproj" />
   </ItemGroup>
 
 </Project>
