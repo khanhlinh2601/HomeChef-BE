@@ -10,7 +10,7 @@ namespace HC.Application.Common.Interfaces
 {
     public interface IGenericRepository<T> where T : BaseEntity
     {
-        Task<List<T>> GetAllAsync();
+        Task<IEnumerable<T>> GetAllAsync();
 
         Task<T> GetByIdAsync(Guid id);
 
@@ -37,13 +37,14 @@ namespace HC.Application.Common.Interfaces
         /// <returns>A object have soft deleted</returns>
         Task<T> DeleteSoftAsync(Guid id);
         Task<T> FindWithCondition(Expression<Func<T, bool>> predicate);
-        Task<IList<T>> WhereAsync(Expression<Func<T, bool>> predicate, params string[] navigationProperties);
-        Task<List<T>> FindAllWithCondition(Expression<Func<T, bool>> predicate = null);
-        Task<List<T>> GetAllActiveAsync();
+        Task<IEnumerable<T>> WhereAsync(Expression<Func<T, bool>> predicate, params string[] navigationProperties);
+        Task<IEnumerable<T>> FindAllWithCondition(Expression<Func<T, bool>> predicate = null);
+        Task<IEnumerable<T>> GetAllActiveAsync();
         Task<T> GetByIdActiveAsync(Guid id);
         Task<T> GetOneByConditionAsync(Func<T, bool> expression);
         Task<T> GetOneByConditionAsync(Func<T, bool> expression, Expression<Func<T, object>>[]? includeProperties = null);
         Task<T> GetOneByConditionAsync(Guid id, Expression<Func<T, object>>[]? includeProperties = null);
         Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, object>>[]? includeProperties = null);
+        Task<int> CountAsync();
     }
 }

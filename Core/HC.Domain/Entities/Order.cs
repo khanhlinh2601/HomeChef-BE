@@ -1,26 +1,18 @@
 ﻿using HC.Domain.Common;
+using HC.Domain.Common.Enums;
 using HC.Domain.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace HC.Domain.Entities
+namespace HC.Domain.Entities;
+
+public class Order : BaseEntity
 {
-    public class Order : BaseEntity
-    {
-        public Guid CustomerId { get; set; }
-        public User Customer { get; set; }
-        public Guid ChefId { get; set; }    
-        public User Chef { get; set; }
-        public OrderStatus Status { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime? CookingTime { get; set; }
-        public int Hour { get; set; }
-        public PaymentType PaymentType { get; set; }
-        public double TotalPrice { get; set; }
-
-
-    }
+    public Guid ChefId { get; set; }
+    public OrderStatus Status { get; set; } = default!;
+    public double TotalPrice { get; set; } = default!;
+    public TransactionMethod IntialTransactionMethod { get; set; } = default!;
+    public List<OrderVoucher> OrderVouchers { get; set; } = new List<OrderVoucher>();
+    public List<Transaction> Transactions { get; set; } = new List<Transaction>();
+    public string RejectReason { get; set; } = default!;
+    public OrderDetail OrderDetail { get; set; } = default!;
 }
+

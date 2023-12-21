@@ -8,42 +8,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HC.Domain.Enums;
+using HC.Domain.Common.Enums;
 
-namespace HC.Domain.Entities
+namespace HC.Domain.Entities;
+
+public class User : BaseEntity
 {
-    [Table("User")]
-    public class User : BaseEntity
-    {
-        [MaxLength(50)]
-        [EmailAddress]
-        public string Email { get; set; } = null!;
-
-        [StringLength(20)]
-        [Phone]
-        public string? Phone { get; set; }
-
-        public List<string> FcmToken { get; set; } = new List<string>();        
-        public DateTime? Birthday { get; set; }
-
-        [MaxLength(255)]
-        public string? AvatarUrl { get; set; }
-
-        [MaxLength(50)]
-        public string? FullName { get; set; }
-
-        public Gender Gender { get; set; }
-
-        public Guid RoleId { get; set; }
-        public virtual Role Role { get; set; } = null!;
-
-        public virtual ICollection<Chat> Chats { get; set; } = new List<Chat>();
-
-        public virtual ICollection<Feedback> Feedbacks { get; set; } = new List<Feedback>();
-
-        public virtual ICollection<CustomerAddress> CustomerAddresses { get; set; } = new List<CustomerAddress>();
-
-        public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
-
-        public virtual Chef? Chef { get; set; }
-    }
+    public string? Email { get; set; }
+    public string? Phone { get; set; }
+    public List<string> FcmToken { get; set; } = new List<string>();
+    public DateTime? Birthday { get; set; }
+    public string? AvatarUrl { get; set; }
+    public string? FullName { get; set; }
+    public Gender Gender { get; set; }
+    public Role Role { get; set; } 
+    public bool EmailConfirmed { get; set; } = false;
+    public bool PhoneConfirmed { get; set; } = false;
+    public string? PasswordHash { get; set; }
+    public List<District> Districts { get; set; } = new List<District>();
+    public List<string>? IdentityCard { get; set; }
+    public string? Description { get; set; }
+    public long Wallet { get; set; } = 0;
+    public AuthProviderType Provider { get; set; }
 }
+

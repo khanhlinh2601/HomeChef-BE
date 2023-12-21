@@ -1,145 +1,97 @@
-﻿
+﻿using HC.Application.Common.Exceptions;
 using HC.Application.Common.Interfaces;
+using HC.Application.Interfaces;
 using HC.Domain.Dto.Requests;
 using HC.Domain.Dto.Responses;
 using HC.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Mapster;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace HC.Application.Services
+namespace HC.Application.Services;
+
+public class UserService : IUserService
 {
-    public class UserService : IUserService
+    private readonly IGenericRepository<User> _userRepository;
+
+    public UserService(IGenericRepository<User> userRepository)
     {
-        private readonly IUnitOfWork _unitOfWork;
+        _userRepository = userRepository;
+    }
 
-        public UserService(IUnitOfWork unitOfWork)
+    public async Task<Guid> Create(CreateUserRequest request)
+    {
+        await ValidateUser(request);
+        var entity = request.Adapt<User>();
+        await _userRepository.CreateAsync(entity);
+        return entity.Id;
+    }
+
+    public async Task<Guid> Delete(Guid id)
+    {
+        var user = await GetUserById(id);
+        await _userRepository.DeleteAsync(user.Id);
+        return user.Id;
+    }
+
+    public Task<IEnumerable<UserResponse>> GetAll()
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task<UserResponse> GetById(Guid id)
+    {
+        var user = await GetUserById(id);
+        return user.Adapt<UserResponse>();
+    }
+
+    public async Task<Guid> Update(Guid id, UpdateUserRequest request)
+    {
+        var user = await GetUserById(id);
+        await _userRepository.UpdateAsync(user);
+        return user.Id;
+    }
+
+    public async Task<Guid> UpdateFcmToken(Guid id, string fcmToken)
+    {
+        var user = await GetUserById(id);
+        user.FcmToken.Add(fcmToken);
+        await _userRepository.UpdateAsync(user);
+        return user.Id;
+    }
+    public async Task<User> GetByEmailAndPhone(string? email, string? phone)
+    {
+        var user = await _userRepository.GetOneByConditionAsync(
+            expression: x => x.Email == email || x.Phone == phone,
+            new Expression<Func<User, object>>[] { x => x.Role }
+            );
+        return user;
+    }
+
+    private async Task ValidateUser(CreateUserRequest request)
+    {
+        var user = await GetByEmailAndPhone(request.Email, request.Phone);
+        if (user is not null)
         {
-            _unitOfWork = unitOfWork;
+            throw new ConflictException("User is already exist");
         }
 
-        public async Task<bool> Create(CreateUserRequest request)
+
+    }
+    private async Task<User> GetUserById(Guid id)
+    {
+        var user = await _userRepository.GetByIdAsync(id);
+        if (user is null)
         {
-            try
-            {
-                var role = await _unitOfWork.Role.GetByIdAsync(request.RoleId);
-                if (role is null)
-                {
-                    throw new BadRequestException("Role invalid");
-                }
-
-                var user = await _unitOfWork.User.GetOneByConditionAsync(
-                    expression: x => x.Email == request.Email || x.Phone == request.Phone,
-                    new Expression<Func<User, object>>[] { x => x.Role }
-                    );
-                if (user is not null)
-                {
-                    throw new BadRequestException("User is exist");
-                }
-                user = new User()
-                {
-                    Email = request.Email,
-                    Phone = request.Phone,
-                    RoleId = role.Id,
-                    AvatarUrl = request.AvatarUrl,
-                    Birthday = request.Birthday,
-                    FcmToken = new List<string> { request.FcmToken },
-                    FullName = request.FullName,
-
-                };
-                if (role.Name.Equals("Chef"))
-                {
-                    await _unitOfWork.Chef.CreateAsync(new Chef()
-                    {
-                        User = user,
-                        Wallet = 0
-                    });
-                }
-                await _unitOfWork.User.CreateAsync(user);
-
-                return await _unitOfWork.SaveChangesAsync() > 0;
-            }
-            catch (Exception ex)
-            {
-                throw new BadRequestException(ex.Message);
-            }
-            
+            throw new NotFoundException("User is not exist");
         }
+        return user;
+    }
 
-        public async Task<bool> Update (Guid id, UpdateUserRequest request)
-        {
-            try
-            {
-                var user = await _unitOfWork.User.GetByIdAsync (id);
-                if (user is null)
-                {
-                    throw new BadRequestException("User is not exist");
-                }
-                user.Email = request.Email ?? "";
-                user.FullName = request.FullName ?? "";
-                user.AvatarUrl = request.AvatarUrl ?? "";
-                user.Phone = request.Phone ?? "";
-                user.Birthday = request.Birthday;
-                user.Chef.IdentityCard = request.IdentityCard ?? "";
-                user.Chef.Biography = request.Biography ?? "";
-                user.Chef.Districts = await HandleDistrict(request.DistrictIds ?? new List<Guid>());
-
-                return await _unitOfWork.User.UpdateAsync(user) > 0;
-
-            }
-            catch (Exception ex)
-            {
-                throw new BadRequestException(ex.Message);
-            }
-        }
-
-        public async Task<bool> Delete (Guid id)
-        {
-            return (await _unitOfWork.User.DeleteAsync(id)) != null;
-        }
-
-        public async Task<UserResponse> GetById(Guid id)
-        {
-            var user = await _unitOfWork.User
-                .GetOneByConditionAsync(id, 
-                new Expression<Func<User, object>>[] { x => x.Role, x => x.Chef  });
-            return new UserResponse(user);
-        }
-
-        public async Task<IEnumerable<UserResponse>> GetAll()
-        {
-            var user = await _unitOfWork.User.GetAllAsync(
-                includeProperties: new Expression<Func<User, object>>[] { x => x.Role }
-                );
-            IEnumerable<UserResponse> result = new List<UserResponse>();
-            foreach (var u in user)
-            {
-                result.Append(new UserResponse(u));
-            }
-            return result;
-        }
-
-        private async Task<List<District>> HandleDistrict(List<Guid> districtIds)
-        {
-            List<District> districts = new List<District>();
-            foreach (var id in districtIds)
-            {
-                var district = await _unitOfWork.District.GetByIdAsync(id);
-                if (district is null)
-                {
-                    throw new BadRequestException("District is not exist");
-                }
-                districts.Add(district);
-            }
-            return districts;
-        }
-
-        
-
-
-
+    public async Task<Guid> RemoveFcmToken(Guid id, string fcmToken)
+    {
+        var user = await GetUserById(id);
+        user.FcmToken.Remove(fcmToken);
+        await _userRepository.UpdateAsync(user);
+        return user.Id;
     }
 }

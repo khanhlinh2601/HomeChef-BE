@@ -13,11 +13,11 @@ namespace HC.Domain.Dto.Requests
         public string? AvatarUrl { get; set; }
         public string Phone { get; set; } = null!;
 
-        public string? IdentityCard { get; set; } 
+        public string? IdentityCard { get; set; }
 
         public string? Biography { get; set; }
 
-    public List<Guid>? DistrictIds { get; set; }
+        public List<Guid>? DistrictIds { get; set; }
 
         public DateTime? Birthday { get; set; }
     }

@@ -10,7 +10,7 @@ namespace HC.Domain.Dto.Requests
     public class LoginRequest
     {
         public string IdToken { get; set; } = null!;
-        public string? FcmToken { get; set; }
+        public string FcmToken { get; set; } = default!;
         public Guid RoleId { get; set; }
     }
 }

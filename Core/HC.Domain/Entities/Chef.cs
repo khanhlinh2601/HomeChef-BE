@@ -7,17 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HC.Domain.Entities
-{
-    public class Chef : BaseEntity
-    {
-        public string IdentityCard { get; set; }
-        public string Biography { get; set; }
-        public double Wallet { get; set; }
-        public Guid UserId { get; set; }
-        public User User { get; set; }
+namespace HC.Domain.Entities;
 
-        public virtual ICollection<District> Districts { get; set; } = new List<District>();
-        
-    }
+public class Chef : BaseEntity
+{
+    
 }
+

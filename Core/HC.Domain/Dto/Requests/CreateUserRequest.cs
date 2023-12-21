@@ -13,7 +13,7 @@ namespace HC.Domain.Dto.Requests
         public string? FullName { get; set; } = null!;
         public string? AvatarUrl { get; set; }
         public string Phone { get; set; } = null!;
-        public Guid RoleId { get; set; } 
         public DateTime? Birthday { get; set; }
+
     }
 }
