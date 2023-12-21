@@ -996,19 +996,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\linhtk\\.nuget\\packages\\": {}
+    "C:\\Users\\tklin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\workspace\\fpt\\HomeChef-BE\\HC.API\\HC.API.csproj",
+      "projectUniqueName": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.API\\HC.API.csproj",
       "projectName": "HC.API",
-      "projectPath": "D:\\workspace\\fpt\\HomeChef-BE\\HC.API\\HC.API.csproj",
-      "packagesPath": "C:\\Users\\linhtk\\.nuget\\packages\\",
-      "outputPath": "D:\\workspace\\fpt\\HomeChef-BE\\HC.API\\obj\\",
+      "projectPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.API\\HC.API.csproj",
+      "packagesPath": "C:\\Users\\tklin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\linhtk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\tklin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

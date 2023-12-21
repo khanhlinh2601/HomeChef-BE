@@ -57,4 +57,23 @@ public class VoucherService : IVoucherService
         await _voucherRepository.DeleteAsync(id);
         return entity.Id;
     }
+
+    public async Task<IEnumerable<Voucher>> GetVoucherByListId(List<Guid> ids)
+    {
+        var entities = new List<Voucher>();
+        foreach (var id in ids)
+        {
+            var entity = await _voucherRepository.GetOneByConditionAsync(
+
+                expression: x => x.Id == id && x.IsActive && x.Quantity > 0
+                            && x.StartDate <= DateTime.Now && x.EndDate >= DateTime.Now
+            );
+            if (entity == null)
+            {
+                throw new BadRequestException("Voucher not found");
+            }
+            entities.Add(entity);
+        }
+        return entities;
+    }
 }
