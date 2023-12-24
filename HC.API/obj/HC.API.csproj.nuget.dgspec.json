@@ -4,14 +4,176 @@
     "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.API\\HC.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.API\\HC.API.csproj": {
+    "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Application\\HC.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.API\\HC.API.csproj",
-        "projectName": "HC.API",
-        "projectPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.API\\HC.API.csproj",
+        "projectUniqueName": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Application\\HC.Application.csproj",
+        "projectName": "HC.Application",
+        "projectPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Application\\HC.Application.csproj",
         "packagesPath": "C:\\Users\\tklin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.API\\obj\\",
+        "outputPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\tklin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Domain\\HC.Domain.csproj": {
+                "projectPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Domain\\HC.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "AWSSDK.Core": {
+              "target": "Package",
+              "version": "[3.7.300.15, )"
+            },
+            "AWSSDK.S3": {
+              "target": "Package",
+              "version": "[3.7.304.4, )"
+            },
+            "AutoWrapper.Core": {
+              "target": "Package",
+              "version": "[4.5.1, )"
+            },
+            "FirebaseAdmin": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            },
+            "Mapster": {
+              "target": "Package",
+              "version": "[7.3.0, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.24.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.24.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Domain\\HC.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Domain\\HC.Domain.csproj",
+        "projectName": "HC.Domain",
+        "projectPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Domain\\HC.Domain.csproj",
+        "packagesPath": "C:\\Users\\tklin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\tklin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Shared\\HC.Shared.csproj": {
+                "projectPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Shared\\HC.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Shared\\HC.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Shared\\HC.Shared.csproj",
+        "projectName": "HC.Shared",
+        "projectPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Shared\\HC.Shared.csproj",
+        "packagesPath": "C:\\Users\\tklin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\tklin\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +201,68 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.API\\HC.API.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.API\\HC.API.csproj",
+        "projectName": "HC.API",
+        "projectPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.API\\HC.API.csproj",
+        "packagesPath": "C:\\Users\\tklin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.API\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\tklin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Application\\HC.Application.csproj": {
+                "projectPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Application\\HC.Application.csproj"
+              },
+              "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.Infrastructure\\HC.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.Infrastructure\\HC.Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
           "dependencies": {
             "FirebaseAdmin": {
               "target": "Package",
@@ -51,6 +275,10 @@
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[7.0.13, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[3.1.1, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -72,6 +300,136 @@
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
             },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.Infrastructure\\HC.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.Infrastructure\\HC.Infrastructure.csproj",
+        "projectName": "HC.Infrastructure",
+        "projectPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.Infrastructure\\HC.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\tklin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\tklin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Application\\HC.Application.csproj": {
+                "projectPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Application\\HC.Application.csproj"
+              },
+              "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Domain\\HC.Domain.csproj": {
+                "projectPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Domain\\HC.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "EFCore.NamingConventions": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.8.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[7.0.14, )"
+            },
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.14, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.14, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Versioning": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.14, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.14, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.14, )"
+            },
+            "Microsoft.Extensions.Caching.StackExchangeRedis": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.OpenApi": {
+              "target": "Package",
+              "version": "[1.4.3, )"
+            },
+            "NSwag.AspNetCore": {
+              "target": "Package",
+              "version": "[13.18.2, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Serilog": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

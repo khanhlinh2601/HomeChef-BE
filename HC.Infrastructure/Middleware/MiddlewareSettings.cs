@@ -1,4 +1,4 @@
-namespace HC.BE.Infrastructure.Middleware;
+namespace HC.Infrastructure.Middleware;
 
 public class MiddlewareSettings
 {

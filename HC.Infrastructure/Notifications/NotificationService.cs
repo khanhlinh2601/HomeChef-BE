@@ -8,14 +8,9 @@ using System.Threading.Tasks;
 
 namespace HC.Application.Services
 {
-    public class NotificationService
+    public class NotificationService : INotificationService
     {
-        public IUnitOfWork _unitOfWork { get; set; }
 
-        public NotificationService(IUnitOfWork unitOfWork)
-        {
-            _unitOfWork = unitOfWork;
-        }
         public async Task<string> SendNotificationMultiDeviceAsync(List<string> fcmTokens, string title, string content)
         {
             var message = new MulticastMessage()
@@ -46,7 +41,7 @@ namespace HC.Application.Services
             string response = await FirebaseMessaging.DefaultInstance.SendAsync(message);
             return response;
         }
-         
+
 
     }
 }

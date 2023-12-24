@@ -20,7 +20,7 @@ public class StorageService
         try
         {
             //handle upload file
-            var creadentials = new BasicAWSCredentials();
+            var creadentials = new BasicAWSCredentials(_awsSettings.AccessKey, _awsSettings.SecretKey);
             var config = new AmazonS3Config()
             {
                 RegionEndpoint = Amazon.RegionEndpoint.APSoutheast1
@@ -52,4 +52,3 @@ public class StorageService
         }
     }
 }
-

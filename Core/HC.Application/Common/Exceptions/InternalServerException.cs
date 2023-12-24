@@ -1,6 +1,6 @@
 using System.Net;
 
-namespace HC.BE.Application.Common.Exceptions;
+namespace HC.Application.Common.Exceptions;
 
 public class InternalServerException : CustomException
 {

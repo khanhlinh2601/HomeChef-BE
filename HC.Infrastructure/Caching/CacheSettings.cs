@@ -1,4 +1,4 @@
-namespace HC.BE.Infrastructure.Caching;
+namespace HC.Infrastructure.Caching;
 
 public class CacheSettings
 {

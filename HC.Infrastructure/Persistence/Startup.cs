@@ -25,8 +25,7 @@ internal static class Startup
             {
                 _logger.Information("Current DB Provider: PostgreSql");
             })
-            .ValidateDataAnnotations()
-            .ValidateOnStart();
+            .ValidateDataAnnotations();
 
         return services
             .AddDbContext<ApplicationDbContext>((p, m) =>

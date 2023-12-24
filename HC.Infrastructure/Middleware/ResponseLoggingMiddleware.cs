@@ -1,9 +1,9 @@
-using HC.BE.Application.Common.Interfaces;
+using HC.Application.Common.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Serilog;
 using Serilog.Context;
 
-namespace HC.BE.Infrastructure.Middleware;
+namespace HC.Infrastructure.Middleware;
 
 public class ResponseLoggingMiddleware : IMiddleware
 {
@@ -36,10 +36,8 @@ public class ResponseLoggingMiddleware : IMiddleware
 
         string email = _currentUser.GetUserEmail() is string userEmail ? userEmail : "Anonymous";
         var userId = _currentUser.GetUserId();
-        string tenant = _currentUser.GetTenant() ?? string.Empty;
         if (userId != Guid.Empty) LogContext.PushProperty("UserId", userId);
         LogContext.PushProperty("UserEmail", email);
-        if (!string.IsNullOrEmpty(tenant)) LogContext.PushProperty("Tenant", tenant);
         LogContext.PushProperty("StatusCode", httpContext.Response.StatusCode);
         LogContext.PushProperty("ResponseTimeUTC", DateTime.UtcNow);
         Log.ForContext("ResponseHeaders", httpContext.Response.Headers.ToDictionary(h => h.Key, h => h.Value.ToString()), destructureObjects: true)

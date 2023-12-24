@@ -8,8 +8,7 @@ internal static class Startup
     {
         services.AddOptions<AwsSettings>()
             .BindConfiguration("AwsCredentials")
-            .ValidateDataAnnotations()
-            .ValidateOnStart();
+            .ValidateDataAnnotations();
         services.AddSingleton<StorageService>();
         return services;
     }

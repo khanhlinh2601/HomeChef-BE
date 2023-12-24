@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace HC.BE.Infrastructure.Middleware;
+namespace HC.Infrastructure.Middleware;
 
 internal static class Startup
 {
@@ -35,5 +35,5 @@ internal static class Startup
     }
 
     private static MiddlewareSettings GetMiddlewareSettings(IConfiguration config) =>
-        config.GetSection(nameof(MiddlewareSettings)).Get<MiddlewareSettings>()!;
+        config.GetSection("").Get<MiddlewareSettings>()!;
 }

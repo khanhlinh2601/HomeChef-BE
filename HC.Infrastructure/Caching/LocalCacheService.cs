@@ -2,7 +2,7 @@ using HC.Application.Common.Caching;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 
-namespace HC.BE.Infrastructure.Caching;
+namespace HC.Infrastructure.Caching;
 
 public class LocalCacheService : ICacheService
 {

@@ -11,7 +11,6 @@ namespace HC.Domain.Dto.Responses
         public Guid Id { get; set; }
         public string Title { get; set; } = null!;
         public string Content { get; set; } = null!;
-        public NotificationType NotificationType { get; set; }
         public Guid ReceiverId { get; set; }
         public DateTime SentTime { get; set; }
     }

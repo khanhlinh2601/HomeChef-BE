@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace HC.BE.Infrastructure.Caching;
+namespace HC.Infrastructure.Caching;
 
 internal static class Startup
 {

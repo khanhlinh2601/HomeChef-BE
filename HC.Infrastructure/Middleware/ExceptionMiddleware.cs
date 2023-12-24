@@ -6,7 +6,7 @@ using Microsoft.Extensions.Localization;
 using Serilog;
 using Serilog.Context;
 
-namespace HC.BE.Infrastructure.Middleware;
+namespace HC.Infrastructure.Middleware;
 
 internal class ExceptionMiddleware : IMiddleware
 {
