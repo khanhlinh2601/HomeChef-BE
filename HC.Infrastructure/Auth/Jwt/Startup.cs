@@ -9,7 +9,7 @@ internal static class Startup
     internal static IServiceCollection AddJwtAuth(this IServiceCollection services)
     {
         services.AddOptions<JwtSettings>()
-            .BindConfiguration($"SecuritySettings:{nameof(JwtSettings)}")
+            .BindConfiguration($"SecuritySettings:JwtSettings")
             .ValidateDataAnnotations();
 
         services.AddSingleton<IConfigureOptions<JwtBearerOptions>, ConfigureJwtBearerOptions>();

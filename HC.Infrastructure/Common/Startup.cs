@@ -1,5 +1,4 @@
 using HC.Application.Common.Interfaces;
-using HC.BE.Application.Common.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace HC.Infrastructure.Common;

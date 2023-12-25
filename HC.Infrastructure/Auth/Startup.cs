@@ -9,9 +9,14 @@ internal static class Startup
 {
     internal static IServiceCollection AddAuth(this IServiceCollection services, IConfiguration config)
     {
+        // return services
+        // .AddCurrentUser()
+        // .AddJwtAuth();
+        services.Configure<SecuritySettings>(config.GetSection(nameof(SecuritySettings)));
         return services
-        .AddCurrentUser()
-        .AddJwtAuth();
+            .AddJwtAuth()
+            .AddCurrentUser();
+
 
     }
 

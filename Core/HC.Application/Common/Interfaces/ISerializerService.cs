@@ -1,6 +1,8 @@
+using HC.Application.Common.Interfaces;
+
 namespace HC.Application.Common.Interfaces;
 
-public interface ISerializerService
+public interface ISerializerService : ITransientService
 {
     string Serialize<T>(T obj);
 

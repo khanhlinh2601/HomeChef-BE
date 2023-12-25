@@ -1,87 +1,50 @@
 using HC.Application.Common.Interfaces;
-using HC.Domain.Common;
 using HC.Domain.Dto.Responses;
 using HC.Infrastructure.Auth.Jwt;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace HC.Infrastructure.Identity;
 
-public class JwtService : ITokenService
+internal class TokenService : ITokenService
 {
-    private SigningCredentials? _credentials;
-    private SymmetricSecurityKey? _securityKey;
     private readonly JwtSettings _jwtSettings;
 
-    public JwtService(JwtSettings jwtSettings)
+    public TokenService(IOptions<JwtSettings> jwtSettings)
     {
-        _jwtSettings = jwtSettings;
-        SetupCredentials();
+        _jwtSettings = jwtSettings.Value;
     }
-
-    private void SetupCredentials()
+    public  string GetTokenAsync(UserResponse request)
     {
-        _securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.IssuerSigningKey));
-        _credentials = new SigningCredentials(_securityKey, SecurityAlgorithms.HmacSha256);
+        return GenerateJwt(request);
     }
-    public string GetToken(UserResponse user)
+    private string GenerateJwt(UserResponse user) =>
+        GenerateEncryptedToken(GetSigningCredentials(), GetClaims(user));
+    private string GenerateEncryptedToken(SigningCredentials signingCredentials, IEnumerable<Claim> claims)
     {
-        var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.IssuerSigningKey));
-        var _TokenExpiryTimeInHour = Convert.ToInt64(_jwtSettings.RequireExpirationTime);
-        var tokenDescriptor = new SecurityTokenDescriptor
-        {
-            Issuer = _jwtSettings.ValidIssuer,
-            Audience = _jwtSettings.ValidAudience,
-            //Expires = DateTime.UtcNow.AddHours(_TokenExpiryTimeInHour),
-            Expires = DateTime.UtcNow.AddMinutes(1),
-            SigningCredentials = new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256),
-            Subject = new ClaimsIdentity(new Claim[]
-            {
-                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                    new Claim(ClaimTypes.Role, user.Role),
-            })
-        };
-
+        var token = new JwtSecurityToken(
+           claims: claims,
+           expires: DateTime.UtcNow.AddMinutes(_jwtSettings.TokenExpirationInMinutes),
+           signingCredentials: signingCredentials);
         var tokenHandler = new JwtSecurityTokenHandler();
-        var token = tokenHandler.CreateToken(tokenDescriptor);
         return tokenHandler.WriteToken(token);
     }
-    private JwtSecurityToken GenerateTokenByClaims(IEnumerable<Claim> claims, DateTime expires)
+    private SigningCredentials GetSigningCredentials()
     {
-        return new JwtSecurityToken(_jwtSettings.ValidIssuer,
-            _jwtSettings.ValidAudience,
-            claims,
-            expires: expires,
-            signingCredentials: _credentials);
+        byte[] secret = Encoding.UTF8.GetBytes(_jwtSettings.Key);
+        return new SigningCredentials(new SymmetricSecurityKey(secret), SecurityAlgorithms.HmacSha256);
     }
-
-    public IEnumerable<Claim> DecodeAndValidateToken(string token)
-    {
-        var tokenHandler = new JwtSecurityTokenHandler();
-        try
+    private IEnumerable<Claim> GetClaims(UserResponse user) =>
+        new List<Claim>
         {
-            tokenHandler.ValidateToken(token, new TokenValidationParameters
-            {
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = _securityKey,
-                ValidateIssuer = false,
-                ValidateAudience = false,
-                ClockSkew = TimeSpan.Zero
-            }, out SecurityToken validatedToken);
-
-            var jwtToken = (JwtSecurityToken)validatedToken;
-            return jwtToken.Claims;
-        }
-        catch
-        {
-            return null;
-        }
-    }
+            new(ClaimTypes.NameIdentifier, user.Id.ToString()),
+            new(ClaimTypes.Email, user.Email!),
+            new(ClaimTypes.Name, user.FullName ?? string.Empty),
+            new(ClaimTypes.MobilePhone, user.Phone ?? string.Empty),
+            new(ClaimTypes.Role, user.Role),
+        };
 }
 

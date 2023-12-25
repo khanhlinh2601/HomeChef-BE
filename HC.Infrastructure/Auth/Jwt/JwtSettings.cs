@@ -1,14 +1,21 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace HC.Infrastructure.Auth.Jwt
 {
     public class JwtSettings
     {
-        public bool ValidateIssuerSigningKey { get; set; }
-        public string IssuerSigningKey { get; set; }
-        public bool ValidateIssuer { get; set; } = true;
-        public string ValidIssuer { get; set; }
-        public bool ValidateAudience { get; set; } = true;
-        public string ValidAudience { get; set; }
-        public bool RequireExpirationTime { get; set; }
-        public bool ValidateLifetime { get; set; }
+        public string Key { get; set; } = string.Empty;
+
+        public int TokenExpirationInMinutes { get; set; }
+
+        public int RefreshTokenExpirationInDays { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (string.IsNullOrEmpty(Key))
+            {
+                yield return new ValidationResult("No Key defined in JwtSettings config", new[] { nameof(Key) });
+            }
+        }
     }
 }

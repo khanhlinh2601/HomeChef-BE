@@ -10,7 +10,6 @@ namespace HC.Application.Common.Interfaces
 {
     public interface ITokenService
     {
-        string GetToken(UserResponse user);
-        IEnumerable<Claim> DecodeAndValidateToken(string token);
+        string GetTokenAsync(UserResponse request);
     }
 }

@@ -35,5 +35,5 @@ internal static class Startup
     }
 
     private static MiddlewareSettings GetMiddlewareSettings(IConfiguration config) =>
-        config.GetSection("").Get<MiddlewareSettings>()!;
+        config.GetSection("MiddlewareSettings").Get<MiddlewareSettings>()!;
 }

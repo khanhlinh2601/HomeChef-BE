@@ -1,10 +1,5 @@
 ﻿using FirebaseAdmin.Messaging;
 using HC.Application.Common.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HC.Application.Services;
 
@@ -40,7 +35,5 @@ public class NotificationService : INotificationService
         string response = await FirebaseMessaging.DefaultInstance.SendAsync(message);
         return response;
     }
-
-
 }
 

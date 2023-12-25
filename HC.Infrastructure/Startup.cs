@@ -1,6 +1,7 @@
 using HC.Infrastructure.Caching;
 using HC.Infrastructure.Common;
 using HC.Infrastructure.Cors;
+using HC.Infrastructure.Localization;
 using HC.Infrastructure.Mapping;
 using HC.Infrastructure.Middleware;
 using HC.Infrastructure.OpenApi;
@@ -23,10 +24,12 @@ public static class Startup
             .AddAuth(config)
             .AddCaching(config)
             .AddCorsPolicy(config)
+            .AddPOLocalization(config)
             .AddRequestLogging(config)
             .AddExceptionMiddleware()
             .AddPersistence()
             .AddRequestLogging(config)
+            .AddOpenApiDocumentation(config)
             .AddRouting(options => options.LowercaseUrls = true)
             .AddServices();
     }
@@ -53,8 +56,6 @@ public static class Startup
             .UseAuthorization()
             .UseRequestLogging(config)
             .UseOpenApiDocumentation(config);
-
-
 
     public static IEndpointRouteBuilder MapEndpoints(this IEndpointRouteBuilder builder)
     {

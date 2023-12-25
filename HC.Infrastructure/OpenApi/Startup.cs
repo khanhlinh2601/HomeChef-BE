@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using NJsonSchema.Generation.TypeMappers;
 using NSwag;
 using NSwag.AspNetCore;
@@ -21,8 +20,6 @@ internal static class Startup
         {
             services.AddVersionedApiExplorer(o => o.SubstituteApiVersionInUrl = true);
             services.AddEndpointsApiExplorer();
-
-       
 
             _ = services.AddOpenApiDocument((document, serviceProvider) =>
             {
@@ -43,41 +40,15 @@ internal static class Startup
                         Url = settings.LicenseUrl
                     };
                 };
-
-                if (config["SecuritySettings:Provider"].Equals("AzureAd", StringComparison.OrdinalIgnoreCase))
+                document.AddSecurity(JwtBearerDefaults.AuthenticationScheme, new OpenApiSecurityScheme
                 {
-                    document.AddSecurity(JwtBearerDefaults.AuthenticationScheme, new OpenApiSecurityScheme
-                    {
-                        Type = OpenApiSecuritySchemeType.OAuth2,
-                        Flow = OpenApiOAuth2Flow.AccessCode,
-                        Description = "OAuth2.0 Auth Code with PKCE",
-                        Flows = new()
-                        {
-                            AuthorizationCode = new()
-                            {
-                                AuthorizationUrl = config["SecuritySettings:Swagger:AuthorizationUrl"],
-                                TokenUrl = config["SecuritySettings:Swagger:TokenUrl"],
-                                Scopes = new Dictionary<string, string>
-                                {
-                                    { config["SecuritySettings:Swagger:ApiScope"]!, "access the api" }
-                                }
-                            }
-                        }
-                    });
-                }
-                else
-                {
-                    document.AddSecurity(JwtBearerDefaults.AuthenticationScheme, new OpenApiSecurityScheme
-                    {
-                        Name = "Authorization",
-                        Description = "Input your Bearer token to access this API",
-                        In = OpenApiSecurityApiKeyLocation.Header,
-                        Type = OpenApiSecuritySchemeType.Http,
-                        Scheme = JwtBearerDefaults.AuthenticationScheme,
-                        BearerFormat = "JWT",
-                    });
-                }
-
+                    Name = "Authorization",
+                    Description = "Input your Bearer token to access this API",
+                    In = OpenApiSecurityApiKeyLocation.Header,
+                    Type = OpenApiSecuritySchemeType.Http,
+                    Scheme = JwtBearerDefaults.AuthenticationScheme,
+                    BearerFormat = "JWT",
+                });
                 document.OperationProcessors.Add(new AspNetCoreOperationSecurityScopeProcessor());
                 document.OperationProcessors.Add(new SwaggerGlobalAuthProcessor());
 

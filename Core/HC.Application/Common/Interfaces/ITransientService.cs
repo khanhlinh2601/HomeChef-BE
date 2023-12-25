@@ -1,4 +1,4 @@
-namespace HC.BE.Application.Common.Interfaces;
+namespace HC.Application.Common.Interfaces;
 
 public interface ITransientService
 {

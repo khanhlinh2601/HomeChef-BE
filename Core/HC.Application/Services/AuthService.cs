@@ -20,7 +20,7 @@ namespace HC.Application.Services
         }
         public string GenerateToken(UserResponse user)
         {
-            return _tokenService.GetToken(user);
+            return _tokenService.GetTokenAsync(user);
         }
 
         public async Task<FirebaseToken> GetFirebaseTokenAsync(string token)

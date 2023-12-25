@@ -16,6 +16,7 @@ public class ConfigureJwtBearerOptions : IConfigureNamedOptions<JwtBearerOptions
     {
         _jwtSettings = jwtSettings.Value;
     }
+
     public void Configure(JwtBearerOptions options)
     {
         Configure(string.Empty, options);
@@ -28,23 +29,20 @@ public class ConfigureJwtBearerOptions : IConfigureNamedOptions<JwtBearerOptions
             return;
         }
 
-        byte[] key = Encoding.ASCII.GetBytes(_jwtSettings.IssuerSigningKey);
+        byte[] key = Encoding.ASCII.GetBytes(_jwtSettings.Key);
+
         options.RequireHttpsMetadata = false;
         options.SaveToken = true;
         options.TokenValidationParameters = new TokenValidationParameters
         {
-            ValidateIssuerSigningKey = _jwtSettings.ValidateIssuerSigningKey,
+            ValidateIssuerSigningKey = true,
             IssuerSigningKey = new SymmetricSecurityKey(key),
-            ValidateIssuer = _jwtSettings.ValidateIssuer,
-            ValidIssuer = _jwtSettings.ValidIssuer,
-            ValidateAudience = _jwtSettings.ValidateAudience,
-            ValidAudience = _jwtSettings.ValidAudience,
-            RequireExpirationTime = _jwtSettings.RequireExpirationTime,
-            ValidateLifetime = _jwtSettings.ValidateLifetime,
+            ValidateIssuer = false,
+            ValidateLifetime = true,
+            ValidateAudience = false,
             RoleClaimType = ClaimTypes.Role,
             ClockSkew = TimeSpan.Zero
         };
-
         options.Events = new JwtBearerEvents
         {
             OnChallenge = context =>
@@ -72,6 +70,5 @@ public class ConfigureJwtBearerOptions : IConfigureNamedOptions<JwtBearerOptions
                 return Task.CompletedTask;
             }
         };
-
     }
 }
