@@ -1,31 +1,45 @@
+using HC.Application.Common.Exceptions;
 using HC.Application.Common.Interfaces;
 using HC.Application.Interfaces;
+using HC.Domain.Dto.Requests;
+using HC.Domain.Dto.Responses;
 using HC.Domain.Entities;
 using Mapster;
 
 namespace HC.Application.Services;
 
-public class OrderService
+public class OrderService  : IOrderService
 {
     private readonly IGenericRepository<Order> _orderRepository;
     private readonly IVoucherOrderService _voucherOrderService;
     private readonly IVoucherService _voucherService;
     private readonly ITransactionService _transactionService;
     private readonly INotificationService _notificationService;
+    private readonly ICurrentUser _currentUser;
+    private readonly IUserService _userService;
 
-    public OrderService(IGenericRepository<Order> orderRepository, IVoucherOrderService voucherOrderService, IVoucherService voucherService, ITransactionService transactionService, INotificationService notificationService)
+    public OrderService(IGenericRepository<Order> orderRepository,
+        IVoucherOrderService voucherOrderService,
+        IVoucherService voucherService,
+        ITransactionService transactionService,
+        INotificationService notificationService,
+        ICurrentUser currentUser,
+        IUserService userService)
     {
         _orderRepository = orderRepository;
         _voucherOrderService = voucherOrderService;
         _voucherService = voucherService;
         _transactionService = transactionService;
         _notificationService = notificationService;
+        _currentUser = currentUser;
+        _userService = userService;
     }
 
     public async Task<Guid> Create(CreateOrderRequest request)
     {
         var entity = request.Adapt<Order>();
         entity.TotalPrice = entity.Price;
+
         var vouchers = await _voucherService.GetVoucherByListId(request.VoucherIds);
         foreach (var voucher in vouchers)
         {
@@ -34,18 +48,60 @@ public class OrderService
             entity.TotalPrice -= orderVoucher.Amount;
         }
 
-        //create transaction
         var transaction = await _transactionService.Create(entity);
         entity.Transactions.Add(transaction);
-        //push notification
-
-
-
-
         await _orderRepository.CreateAsync(entity);
+
+        var fcmTokens = await _userService.GetFcmToken(_currentUser.GetUserId());
+        await _notificationService.SendNotificationMultiDeviceAsync(fcmTokens, "Order", "Your order is created");
         return entity.Id;
     }
+    public async Task<OrderResponse> GetById (Guid id)
+    {
+        var order = await GetOrderById(id);
+        OrderResponse result = order.Adapt<OrderResponse>();
+        result.Chef = await _userService.GetById(order.ChefId);
+        result.Transaction = await _transactionService.GetByOrderId(order.Id);
+        return result;
+    }
 
+    public async Task<Order> GetOrderById (Guid id)
+    {
+        var entity = await _orderRepository.GetByIdAsync(id);
+        if (entity == null)
+        {
+            throw new NotFoundException("Order not found");
+        }
+        return entity;
+    }
 
+    public async Task<IEnumerable<OrderResponse>> GetAll()
+    {
+        var entities = await _orderRepository.GetAllAsync();
 
+        return entities.Adapt<IEnumerable<OrderResponse>>();
+    }
+    public async Task<IEnumerable<OrderResponse>> GetOrderByCustomerId(Guid customerId)
+    {
+        var entities = await _orderRepository.WhereAsync(x => x.CreatedBy == customerId);
+        return entities.Adapt<IEnumerable<OrderResponse>>();
+    }
+
+    public async Task<IEnumerable<OrderResponse>> GetOrderByChefId(Guid chefId)
+    {
+        var entities = await _orderRepository.WhereAsync(x => x.ChefId == chefId);
+        return entities.Adapt<IEnumerable<OrderResponse>>();
+    }
+    public async Task<Guid> Delete(Guid id)
+    {
+        await GetOrderById(id);
+        await _orderRepository.DeleteAsync(id);
+        return id;
+    }
+    public async Task<Guid> Update(Guid id, UpdateOrderRequest request)
+    {
+        var entity = await GetOrderById(id);
+        await _orderRepository.UpdateAsync(entity);
+        return id;
+    }
 }

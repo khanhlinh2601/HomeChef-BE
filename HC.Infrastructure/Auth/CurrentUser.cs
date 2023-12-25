@@ -52,4 +52,5 @@ public class CurrentUser : ICurrentUser, ICurrentUserInitializer
             _userId = Guid.Parse(userId);
         }
     }
+
 }

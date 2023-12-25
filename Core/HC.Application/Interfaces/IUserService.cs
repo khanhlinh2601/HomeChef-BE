@@ -19,5 +19,6 @@ namespace HC.Application.Interfaces
         Task<UserResponse> GetById(Guid id);
         Task<User> GetByEmailAndPhone(string? email, string? phone);
         Task<IEnumerable<UserResponse>> GetAll();
+        Task<List<string>> GetFcmToken(Guid id);
     }
 }

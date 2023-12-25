@@ -1,10 +1,9 @@
-﻿using HC.Domain.Common;
 using HC.Domain.Common.Enums;
 using HC.Domain.Enums;
 
-namespace HC.Domain.Entities;
+namespace HC.Domain.Dto.Requests;
 
-public class Order : BaseEntity
+public class UpdateOrderRequest
 {
     public Guid ChefId { get; set; }
     public OrderStatus Status { get; set; } = default!;
@@ -14,8 +13,6 @@ public class Order : BaseEntity
     public List<string> Dish { get; set; } = null!;
     public DishType DishType { get; set; }
     public TransactionMethod IntialTransactionMethod { get; set; } = default!;
-    public List<OrderVoucher> OrderVouchers { get; set; } = new List<OrderVoucher>();
-    public List<Transaction> Transactions { get; set; } = new List<Transaction>();
-    public string RejectReason { get; set; } = default!;
+    
+    
 }
-

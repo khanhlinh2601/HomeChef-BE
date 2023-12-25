@@ -1,7 +1,9 @@
 using HC.Application.Common.Interfaces;
 using HC.Application.Interfaces;
 using HC.Domain.Common.Enums;
+using HC.Domain.Dto;
 using HC.Domain.Entities;
+using Mapster;
 
 namespace HC.Application.Services;
 
@@ -16,22 +18,27 @@ public class TransactionService : ITransactionService
 
     public async Task<Transaction> Create(Order order)
     {
-        Transaction entity = new()
+        var entity = new Transaction
         {
+            OrderId = order.Id,
             Amount = order.TotalPrice,
-            TransactionMethod = order.IntialTransactionMethod,
-            TransactionType = TransactionType.PURCHASE,
             TransactionStatus = TransactionStatus.PENDING,
-            Order = order
+            TransactionType = TransactionType.PURCHASE,
+            TransactionMethod = order.IntialTransactionMethod
         };
-
         await _transactionRepository.CreateAsync(entity);
         return entity;
     }
-
-
-
-
+    public async Task<TransactionResponse> GetById(Guid id)
+    {
+        var entity = await _transactionRepository.GetByIdAsync(id);
+        return entity.Adapt<TransactionResponse>();
+    }
+    public async Task<IEnumerable<TransactionResponse>> GetByOrderId(Guid orderId)
+    {
+        var entities = await _transactionRepository.WhereAsync(x => x.OrderId == orderId);
+        return entities.Adapt<IEnumerable<TransactionResponse>>();
+    }
 
 
 }

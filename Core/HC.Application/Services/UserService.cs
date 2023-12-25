@@ -94,4 +94,9 @@ public class UserService : IUserService
         await _userRepository.UpdateAsync(user);
         return user.Id;
     }
+    public async Task<List<string>> GetFcmToken(Guid id)
+    {
+        var user = await GetUserById(id);
+        return user.FcmToken;
+    }
 }
