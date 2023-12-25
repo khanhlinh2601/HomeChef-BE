@@ -9,19 +9,11 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = HC.API
 build_property.RootNamespace = HC.API
-<<<<<<< Updated upstream
 build_property.ProjectDir = D:\workspace\fpt\HomeChef-BE\HC.API\
-=======
-build_property.ProjectDir = d:\workspace\fpt\HomeChef-BE\HC.API\
->>>>>>> Stashed changes
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-<<<<<<< Updated upstream
 build_property.MSBuildProjectDirectory = D:\workspace\fpt\HomeChef-BE\HC.API
-=======
-build_property.MSBuildProjectDirectory = d:\workspace\fpt\HomeChef-BE\HC.API
->>>>>>> Stashed changes
 build_property._RazorSourceGeneratorDebug = 

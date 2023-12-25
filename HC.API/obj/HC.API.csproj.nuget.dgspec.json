@@ -4,14 +4,176 @@
     "D:\\workspace\\fpt\\HomeChef-BE\\HC.API\\HC.API.csproj": {}
   },
   "projects": {
-    "D:\\workspace\\fpt\\HomeChef-BE\\HC.API\\HC.API.csproj": {
+    "D:\\workspace\\fpt\\HomeChef-BE\\Core\\HC.Application\\HC.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\workspace\\fpt\\HomeChef-BE\\HC.API\\HC.API.csproj",
-        "projectName": "HC.API",
-        "projectPath": "D:\\workspace\\fpt\\HomeChef-BE\\HC.API\\HC.API.csproj",
+        "projectUniqueName": "D:\\workspace\\fpt\\HomeChef-BE\\Core\\HC.Application\\HC.Application.csproj",
+        "projectName": "HC.Application",
+        "projectPath": "D:\\workspace\\fpt\\HomeChef-BE\\Core\\HC.Application\\HC.Application.csproj",
         "packagesPath": "C:\\Users\\linhtk\\.nuget\\packages\\",
-        "outputPath": "D:\\workspace\\fpt\\HomeChef-BE\\HC.API\\obj\\",
+        "outputPath": "D:\\workspace\\fpt\\HomeChef-BE\\Core\\HC.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\linhtk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "D:\\workspace\\fpt\\HomeChef-BE\\Core\\HC.Domain\\HC.Domain.csproj": {
+                "projectPath": "D:\\workspace\\fpt\\HomeChef-BE\\Core\\HC.Domain\\HC.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "AWSSDK.Core": {
+              "target": "Package",
+              "version": "[3.7.300.15, )"
+            },
+            "AWSSDK.S3": {
+              "target": "Package",
+              "version": "[3.7.304.4, )"
+            },
+            "AutoWrapper.Core": {
+              "target": "Package",
+              "version": "[4.5.1, )"
+            },
+            "FirebaseAdmin": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            },
+            "Mapster": {
+              "target": "Package",
+              "version": "[7.3.0, )"
+            },
+            "Microsoft.IdentityModel.Tokens": {
+              "target": "Package",
+              "version": "[6.24.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.24.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\workspace\\fpt\\HomeChef-BE\\Core\\HC.Domain\\HC.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\workspace\\fpt\\HomeChef-BE\\Core\\HC.Domain\\HC.Domain.csproj",
+        "projectName": "HC.Domain",
+        "projectPath": "D:\\workspace\\fpt\\HomeChef-BE\\Core\\HC.Domain\\HC.Domain.csproj",
+        "packagesPath": "C:\\Users\\linhtk\\.nuget\\packages\\",
+        "outputPath": "D:\\workspace\\fpt\\HomeChef-BE\\Core\\HC.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\linhtk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "D:\\workspace\\fpt\\HomeChef-BE\\Core\\HC.Shared\\HC.Shared.csproj": {
+                "projectPath": "D:\\workspace\\fpt\\HomeChef-BE\\Core\\HC.Shared\\HC.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[5.0.17, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\workspace\\fpt\\HomeChef-BE\\Core\\HC.Shared\\HC.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\workspace\\fpt\\HomeChef-BE\\Core\\HC.Shared\\HC.Shared.csproj",
+        "projectName": "HC.Shared",
+        "projectPath": "D:\\workspace\\fpt\\HomeChef-BE\\Core\\HC.Shared\\HC.Shared.csproj",
+        "packagesPath": "C:\\Users\\linhtk\\.nuget\\packages\\",
+        "outputPath": "D:\\workspace\\fpt\\HomeChef-BE\\Core\\HC.Shared\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\linhtk\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -59,17 +221,17 @@
         }
       }
     },
-    "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.API\\HC.API.csproj": {
+    "D:\\workspace\\fpt\\HomeChef-BE\\HC.API\\HC.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.API\\HC.API.csproj",
+        "projectUniqueName": "D:\\workspace\\fpt\\HomeChef-BE\\HC.API\\HC.API.csproj",
         "projectName": "HC.API",
-        "projectPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.API\\HC.API.csproj",
-        "packagesPath": "C:\\Users\\tklin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.API\\obj\\",
+        "projectPath": "D:\\workspace\\fpt\\HomeChef-BE\\HC.API\\HC.API.csproj",
+        "packagesPath": "C:\\Users\\linhtk\\.nuget\\packages\\",
+        "outputPath": "D:\\workspace\\fpt\\HomeChef-BE\\HC.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\tklin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\linhtk\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -83,11 +245,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Application\\HC.Application.csproj": {
-                "projectPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Application\\HC.Application.csproj"
+              "D:\\workspace\\fpt\\HomeChef-BE\\Core\\HC.Application\\HC.Application.csproj": {
+                "projectPath": "D:\\workspace\\fpt\\HomeChef-BE\\Core\\HC.Application\\HC.Application.csproj"
               },
-              "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.Infrastructure\\HC.Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.Infrastructure\\HC.Infrastructure.csproj"
+              "D:\\workspace\\fpt\\HomeChef-BE\\HC.Infrastructure\\HC.Infrastructure.csproj": {
+                "projectPath": "D:\\workspace\\fpt\\HomeChef-BE\\HC.Infrastructure\\HC.Infrastructure.csproj"
               }
             }
           }
@@ -146,17 +308,17 @@
         }
       }
     },
-    "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.Infrastructure\\HC.Infrastructure.csproj": {
+    "D:\\workspace\\fpt\\HomeChef-BE\\HC.Infrastructure\\HC.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.Infrastructure\\HC.Infrastructure.csproj",
+        "projectUniqueName": "D:\\workspace\\fpt\\HomeChef-BE\\HC.Infrastructure\\HC.Infrastructure.csproj",
         "projectName": "HC.Infrastructure",
-        "projectPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.Infrastructure\\HC.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\tklin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.Infrastructure\\obj\\",
+        "projectPath": "D:\\workspace\\fpt\\HomeChef-BE\\HC.Infrastructure\\HC.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\linhtk\\.nuget\\packages\\",
+        "outputPath": "D:\\workspace\\fpt\\HomeChef-BE\\HC.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\tklin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\linhtk\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -170,11 +332,11 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Application\\HC.Application.csproj": {
-                "projectPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Application\\HC.Application.csproj"
+              "D:\\workspace\\fpt\\HomeChef-BE\\Core\\HC.Application\\HC.Application.csproj": {
+                "projectPath": "D:\\workspace\\fpt\\HomeChef-BE\\Core\\HC.Application\\HC.Application.csproj"
               },
-              "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Domain\\HC.Domain.csproj": {
-                "projectPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Domain\\HC.Domain.csproj"
+              "D:\\workspace\\fpt\\HomeChef-BE\\Core\\HC.Domain\\HC.Domain.csproj": {
+                "projectPath": "D:\\workspace\\fpt\\HomeChef-BE\\Core\\HC.Domain\\HC.Domain.csproj"
               }
             }
           }
