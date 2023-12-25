@@ -1,5 +1,3 @@
-using HC.Domain.Common.Enums;
-
 namespace HC.Domain.Dto.Requests;
 
 public class CreateVoucherRequest 

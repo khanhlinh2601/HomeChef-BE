@@ -1,0 +1,1 @@
+global using HC.Domain.Common.Enums;

@@ -34,6 +34,7 @@ internal static class Startup
                 m.UseDatabase(databaseSettings.ConnectionString);
 
             })
+            .AddTransient<IDatabaseInitializer, DatabaseInitializer>()
             .AddTransient<ApplicationDbInitializer>()
             .AddTransient<ApplicationDbSeeder>()
             .AddServices(typeof(ICustomSeeder), ServiceLifetime.Transient)
@@ -46,7 +47,7 @@ internal static class Startup
     }
 
     internal static DbContextOptionsBuilder UseDatabase(this DbContextOptionsBuilder builder, string connectionString)
-     => builder.UseNpgsql(connectionString, b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName));
+     => builder.UseNpgsql(connectionString, b => b.MigrationsAssembly("HC.Migrators"));
 
     private static IServiceCollection AddRepositories(this IServiceCollection services)
     {

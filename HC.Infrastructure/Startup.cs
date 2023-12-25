@@ -6,6 +6,7 @@ using HC.Infrastructure.Mapping;
 using HC.Infrastructure.Middleware;
 using HC.Infrastructure.OpenApi;
 using HC.Infrastructure.Persistence;
+using HC.Infrastructure.Persistence.Initialization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
@@ -61,5 +62,14 @@ public static class Startup
     {
         builder.MapControllers().RequireAuthorization();
         return builder;
+    }
+
+    public static async Task InitializeDatabasesAsync(this IServiceProvider services, CancellationToken cancellationToken = default)
+    {
+        // Create a new scope to retrieve scoped services
+        using var scope = services.CreateScope();
+
+        await scope.ServiceProvider.GetRequiredService<IDatabaseInitializer>()
+            .InitializeDatabasesAsync(cancellationToken);
     }
 }

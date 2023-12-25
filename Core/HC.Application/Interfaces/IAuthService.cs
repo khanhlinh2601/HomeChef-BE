@@ -15,5 +15,6 @@ namespace HC.Application.Interfaces
         Task<FirebaseToken> GetFirebaseTokenAsync(string token);
         Task<LoginResponse> GetUserByFirebaseTokenAsync(LoginRequest loginRequest);
         Task<bool> Logout(Guid userId, string fcmToken);
+        Task<UserResponse> Get(Guid userId);
     }
 }
