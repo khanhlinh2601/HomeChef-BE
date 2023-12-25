@@ -1,5 +1,14 @@
 {
-    "FirebaseSettings": {
-        
-    }
-}
+    "type": "service_account",
+    "project_id": "homechef-8237c",
+    "private_key_id": "29b13fe485f33e4ace8f9f04fc7f051ab889091b",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDLyDr8547aSRrm\nBFyfW7ux7ryjx5mJSGCycdMDY4HEtDNabDz/ugs2j7X14pE/BOMr95aAX5bpZzLx\nz23iS5/fx4K3f2qp10i83cABNopblktUbDDPFgK6l+foMPe+kHredYBxibKO4yB2\nj9q27fXqfsGUytIyJooLhuuWmogneho+z45V17gE/+58KyDOjqGbZiD/2ThzahV9\nCLDw7kW1jJR0+NGcL+NXAvcWSM6ZpaKXCHcGN34r4TvuUtIEB+vGUciGzfaBZw9p\nbqpeOQrx/QLGILRVEKqH/oyYHs1X06t77zrLosjh12oenVcW+knaOl9ieuKHAkrp\n59y9GxT7AgMBAAECggEAUsdtntp5XxafRJy0+08KOcde/bDRH8E09ofiTdgYGM2S\npsKdLMxoTaunIND+a3kSxwN2MYOjDAEN4sh+PJS3xvGGmf+6Vm/Lbl0t59A99+Jf\ni1W/pf+s8BtQ6zMpEFIkd0WH/ZcP35dH0qGxGOolITKIdGbHZ/Pb077k6HKxqEbp\nq/61fOAklXbPDoRn3hzErvhoxnxhmrgyfXaSSbX4vWyNx/tuROZuiVIO5ZEuuXiE\nWmVF7vkHHz6fjipkVWlI/WPtqpYE3OGx+JDEEAzBq5NugHiTXo4u6IuFwsiLeD1W\nm178S8pfg9DXGV2rr0Vi9XFh9nQxlbDSwjB4z/c+EQKBgQDvIKe3FogP2lFKZMjs\nJRx2kW/xgRIwVgvFPxWtDcQba+f7wG9KZ4nJ0Jqrs9M6GTKAJnwydVGcD67/EjVM\n5rfLPs563LCLlSxx2GxfzpNMTv5Z/jvJblGvJEKeYdaApGVi8e+YhSFnBA02lZMk\nqrHqWEi7XetWPhqQVFl2megihQKBgQDaKSIxBvvKWJ1TtQkFsR0O0+icKvi6FDwq\nJW/uSXBqh3FemXwttwlX5cFHo08/Wr4fZGWRx+5r4xkmt0k/zbH+9m976bz0RUTM\n5Pg++bl129qUNAu6z1g/qC1qt+yAd2sj7u7ixdXgRyP37sVV5blNa9yu7I6zjt45\nS6d8xQSxfwKBgHEMiB2XilWsSbgY86AoX09yrHCJK5csZr4md9HrayXnmrG7JSIQ\n1uRROX4pMpgJ54UMLLUSH7Xe+EVgT1B+1q9Ajw8onFIxAOUFgx68I4j042yaM5uk\nCvv48YG9EVKZ5dCkPjhl4Ae6s6B1kC3KgPggKqph2WtZSuem6PCYDFWdAoGBANUz\nY73EFGfASChZALM2Tq6B+447FI5NXirWIVgfHySMrweDOe83NINY/pVzDOxeUvU8\n2WIpoGCBNMA4WPZooC4KShMv70BNPZp7nft1c4Cx1iAF6Pysy5KSWag0jIVTrzoT\ntBOcwZKIE6emCeYTNg9qfOXaOu9RjO0zeUAfDqIjAoGACh7fVosUnSv6ygIfi+YS\nuP004Kg75erfbq6nqbAmDjb57AjjW7hWFh+rWqh+At9qLo6UEUCEIjatpd2IErVW\n9wtyITQ/mR0UDocjeU9CNlwOgTXzxmQBf+KOCzSfAF7l2/Tc8ZVMt2Q0UX6/ZwlG\n29LebOAqfMlNH7Gw/jkbQFc=\n-----END PRIVATE KEY-----\n",
+    "client_email": "firebase-adminsdk-l3g79@homechef-8237c.iam.gserviceaccount.com",
+    "client_id": "110993895354780915973",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-l3g79%40homechef-8237c.iam.gserviceaccount.com",
+    "universe_domain": "googleapis.com"
+  }
+  
