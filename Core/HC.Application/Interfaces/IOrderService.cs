@@ -1,10 +1,6 @@
-using HC.Domain.Dto.Requests;
-using HC.Domain.Dto.Responses;
-using HC.Domain.Entities;
-
 namespace HC.Application.Interfaces;
 
-public interface IOrderService
+public interface IOrderService : IScopedService
 {
     Task<Guid> Create(CreateOrderRequest request);
     Task<OrderResponse> GetById (Guid id);

@@ -1,8 +1,7 @@
-using HC.Domain.Common.Enums;
 
 namespace HC.Domain.Dto.Responses;
 
-public class VoucherResponse 
+public class VoucherResponse
 {
     public string Name { get; set; } = default!;
     public string Code { get; set; } = default!;

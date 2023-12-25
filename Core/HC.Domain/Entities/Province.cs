@@ -1,15 +1,10 @@
 ﻿using HC.Domain.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HC.Domain.Entities
 {
     public class Province : BaseEntity
     {
-        public string Name { get; set; }
+        public string Name { get; set; } = default!;
 
         public virtual ICollection<District> Districts { get; set; } = new List<District>();
     }

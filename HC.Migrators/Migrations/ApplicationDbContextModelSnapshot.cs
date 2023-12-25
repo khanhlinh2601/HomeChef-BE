@@ -70,8 +70,8 @@ namespace HC.Migrators.Migrations
                         .HasColumnName("deleted_on");
 
                     b.Property<string>("Description")
-                        .HasMaxLength(1024)
-                        .HasColumnType("character varying(1024)")
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)")
                         .HasColumnName("description");
 
                     b.Property<Guid>("DistrictId")
@@ -80,8 +80,8 @@ namespace HC.Migrators.Migrations
 
                     b.Property<string>("HouseNumber")
                         .IsRequired()
-                        .HasMaxLength(1024)
-                        .HasColumnType("character varying(1024)")
+                        .HasMaxLength(10)
+                        .HasColumnType("character varying(10)")
                         .HasColumnName("house_number");
 
                     b.Property<bool>("IsDeleted")
@@ -109,53 +109,12 @@ namespace HC.Migrators.Migrations
                         .HasColumnName("ward");
 
                     b.HasKey("Id")
-                        .HasName("pk_addresses");
+                        .HasName("pk_address");
 
                     b.HasIndex("DistrictId")
-                        .HasDatabaseName("ix_addresses_district_id");
+                        .HasDatabaseName("ix_address_district_id");
 
-                    b.ToTable("addresses", (string)null);
-                });
-
-            modelBuilder.Entity("HC.Domain.Entities.Chef", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid")
-                        .HasColumnName("id");
-
-                    b.Property<Guid>("CreatedBy")
-                        .HasColumnType("uuid")
-                        .HasColumnName("created_by");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("created_on");
-
-                    b.Property<Guid?>("DeletedBy")
-                        .HasColumnType("uuid")
-                        .HasColumnName("deleted_by");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("deleted_on");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("boolean")
-                        .HasColumnName("is_deleted");
-
-                    b.Property<Guid>("LastModifiedBy")
-                        .HasColumnType("uuid")
-                        .HasColumnName("last_modified_by");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("timestamp with time zone")
-                        .HasColumnName("last_modified_on");
-
-                    b.HasKey("Id")
-                        .HasName("pk_chefs");
-
-                    b.ToTable("chefs", (string)null);
+                    b.ToTable("address", (string)null);
                 });
 
             modelBuilder.Entity("HC.Domain.Entities.District", b =>
@@ -204,12 +163,12 @@ namespace HC.Migrators.Migrations
                         .HasColumnName("province_id");
 
                     b.HasKey("Id")
-                        .HasName("pk_districts");
+                        .HasName("pk_district");
 
                     b.HasIndex("ProvinceId")
-                        .HasDatabaseName("ix_districts_province_id");
+                        .HasDatabaseName("ix_district_province_id");
 
-                    b.ToTable("districts", (string)null);
+                    b.ToTable("district", (string)null);
                 });
 
             modelBuilder.Entity("HC.Domain.Entities.Feedback", b =>
@@ -343,9 +302,9 @@ namespace HC.Migrators.Migrations
                         .HasColumnName("total_price");
 
                     b.HasKey("Id")
-                        .HasName("pk_orders");
+                        .HasName("pk_order");
 
-                    b.ToTable("orders", (string)null);
+                    b.ToTable("order", (string)null);
                 });
 
             modelBuilder.Entity("HC.Domain.Entities.OrderVoucher", b =>
@@ -396,15 +355,15 @@ namespace HC.Migrators.Migrations
                         .HasColumnName("voucher_id");
 
                     b.HasKey("Id")
-                        .HasName("pk_order_vouchers");
+                        .HasName("pk_order_voucher");
 
                     b.HasIndex("OrderId")
-                        .HasDatabaseName("ix_order_vouchers_order_id");
+                        .HasDatabaseName("ix_order_voucher_order_id");
 
                     b.HasIndex("VoucherId")
-                        .HasDatabaseName("ix_order_vouchers_voucher_id");
+                        .HasDatabaseName("ix_order_voucher_voucher_id");
 
-                    b.ToTable("order_vouchers", (string)null);
+                    b.ToTable("order_voucher", (string)null);
                 });
 
             modelBuilder.Entity("HC.Domain.Entities.Province", b =>
@@ -722,7 +681,7 @@ namespace HC.Migrators.Migrations
                         .HasForeignKey("DistrictId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_addresses_districts_district_id");
+                        .HasConstraintName("fk_address_districts_district_id");
 
                     b.Navigation("District");
                 });
@@ -734,7 +693,7 @@ namespace HC.Migrators.Migrations
                         .HasForeignKey("ProvinceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_districts_provinces_province_id");
+                        .HasConstraintName("fk_district_provinces_province_id");
 
                     b.Navigation("Province");
                 });
@@ -758,14 +717,14 @@ namespace HC.Migrators.Migrations
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_order_vouchers_orders_order_id");
+                        .HasConstraintName("fk_order_voucher_orders_order_id");
 
                     b.HasOne("HC.Domain.Entities.Voucher", "Voucher")
                         .WithMany()
                         .HasForeignKey("VoucherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_order_vouchers_voucher_voucher_id");
+                        .HasConstraintName("fk_order_voucher_voucher_voucher_id");
 
                     b.Navigation("Order");
 

@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FirebaseAdmin.Auth;
-using HC.Domain.Dto.Requests;
-using HC.Domain.Dto.Responses;
+﻿using FirebaseAdmin.Auth;
 
-namespace HC.Application.Interfaces
+namespace HC.Application.Interfaces;
+
+public interface IAuthService : IScopedService
 {
-    public interface IAuthService
-    {
-        string GenerateToken(UserResponse user);
-        Task<FirebaseToken> GetFirebaseTokenAsync(string token);
-        Task<LoginResponse> GetUserByFirebaseTokenAsync(LoginRequest loginRequest);
-        Task<bool> Logout(Guid userId, string fcmToken);
-        Task<UserResponse> Get(Guid userId);
-    }
+    string GenerateToken(UserResponse user);
+    Task<FirebaseToken> GetFirebaseTokenAsync(string token);
+    Task<LoginResponse> GetUserByFirebaseTokenAsync(LoginRequest loginRequest);
+    Task<bool> Logout(Guid userId, string fcmToken);
+    Task<UserResponse> Get(Guid userId);
 }
+

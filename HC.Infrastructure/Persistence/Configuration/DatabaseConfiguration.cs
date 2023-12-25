@@ -8,7 +8,7 @@ public class OrderConfig : IEntityTypeConfiguration<Order>
 {
     public void Configure(EntityTypeBuilder<Order> builder)
     {
-        builder.ToTable("orders");
+        builder.ToTable("order");
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id).ValueGeneratedOnAdd();
         builder.Property(x => x.Quantity).IsRequired();
@@ -21,7 +21,7 @@ public class OrderVoucherConfig : IEntityTypeConfiguration<OrderVoucher>
 {
     public void Configure(EntityTypeBuilder<OrderVoucher> builder)
     {
-        builder.ToTable("order_vouchers");
+        builder.ToTable("order_voucher");
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id).ValueGeneratedOnAdd();
         builder.Property(x => x.VoucherId).IsRequired();
@@ -33,13 +33,13 @@ public class AddressConfig : IEntityTypeConfiguration<Address>
 {
     public void Configure(EntityTypeBuilder<Address> builder)
     {
-        builder.ToTable("addresses");
+        builder.ToTable("address");
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id).ValueGeneratedOnAdd();
         builder.Property(x => x.Street).HasMaxLength(100);
         builder.Property(x => x.Ward).HasMaxLength(100);
-        builder.Property(x => x.HouseNumber).HasMaxLength(1024);
-        builder.Property(x => x.Description).HasMaxLength(1024);
+        builder.Property(x => x.HouseNumber).HasMaxLength(10);
+        builder.Property(x => x.Description).HasMaxLength(100);
     }
 }
 
@@ -47,9 +47,11 @@ public class DistrictConfig : IEntityTypeConfiguration<District>
 {
     public void Configure(EntityTypeBuilder<District> builder)
     {
-        builder.ToTable("districts");
+        builder.ToTable("district");
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Id).ValueGeneratedOnAdd();
         builder.Property(x => x.Name).HasMaxLength(100);
     }
 }
+
+

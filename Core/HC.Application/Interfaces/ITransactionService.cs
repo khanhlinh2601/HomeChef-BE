@@ -1,9 +1,6 @@
-using HC.Domain.Dto;
-using HC.Domain.Entities;
-
 namespace HC.Application.Interfaces;
 
-public interface ITransactionService
+public interface ITransactionService : IScopedService
 {
     Task<Transaction> Create(Order order);
     Task<TransactionResponse> GetById(Guid id);

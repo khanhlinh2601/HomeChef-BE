@@ -1,14 +1,6 @@
-using HC.Application.Common.Exceptions;
-using HC.Application.Common.Interfaces;
-using HC.Application.Interfaces;
-using HC.Domain.Dto.Requests;
-using HC.Domain.Dto.Responses;
-using HC.Domain.Entities;
-using Mapster;
-
 namespace HC.Application.Services;
 
-public class OrderService  : IOrderService
+public class OrderService : IOrderService
 {
     private readonly IGenericRepository<Order> _orderRepository;
     private readonly IVoucherOrderService _voucherOrderService;
@@ -56,7 +48,7 @@ public class OrderService  : IOrderService
         await _notificationService.SendNotificationMultiDeviceAsync(fcmTokens, "Order", "Your order is created");
         return entity.Id;
     }
-    public async Task<OrderResponse> GetById (Guid id)
+    public async Task<OrderResponse> GetById(Guid id)
     {
         var order = await GetOrderById(id);
         OrderResponse result = order.Adapt<OrderResponse>();
@@ -65,7 +57,7 @@ public class OrderService  : IOrderService
         return result;
     }
 
-    public async Task<Order> GetOrderById (Guid id)
+    public async Task<Order> GetOrderById(Guid id)
     {
         var entity = await _orderRepository.GetByIdAsync(id);
         if (entity == null)

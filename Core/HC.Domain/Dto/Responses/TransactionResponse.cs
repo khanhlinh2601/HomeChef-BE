@@ -1,6 +1,5 @@
-using HC.Domain.Common.Enums;
 
-namespace HC.Domain.Dto;
+namespace HC.Domain.Dto.Responses;
 
 public class TransactionResponse
 {

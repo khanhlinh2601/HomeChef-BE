@@ -1,9 +1,6 @@
-using HC.Domain.Dto.Requests;
-using HC.Domain.Dto.Responses;
-
 namespace HC.Application.Interfaces;
 
-public interface IAddressService
+public interface IAddressService : IScopedService
 {
     Task<IEnumerable<ProvinceResponse>> GetProvinces();
     Task<IEnumerable<DistrictResponse>> GetDistricts();

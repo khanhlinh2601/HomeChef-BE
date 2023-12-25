@@ -16,7 +16,6 @@ public class ApplicationDbContext : BaseDbContext
     }
     public DbSet<User> Users { get; set; }
     public DbSet<Feedback> Feedbacks { get; set; }
-    public DbSet<Chef> Chefs { get; set; }
     public DbSet<District> Districts { get; set; }
     public DbSet<Province> Provinces { get; set; }
     public DbSet<Order> Orders { get; set; }

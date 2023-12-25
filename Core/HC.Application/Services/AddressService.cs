@@ -1,12 +1,4 @@
-﻿using HC.Application.Common.Exceptions;
-using HC.Application.Common.Interfaces;
-using HC.Application.Interfaces;
-using HC.Domain.Dto.Requests;
-using HC.Domain.Dto.Responses;
-using HC.Domain.Entities;
-using Mapster;
-
-namespace HC.Application.Services;
+﻿namespace HC.Application.Services;
 
 public class AddressService : IAddressService
 {

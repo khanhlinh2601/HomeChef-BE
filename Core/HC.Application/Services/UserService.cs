@@ -1,11 +1,4 @@
-﻿using HC.Application.Common.Exceptions;
-using HC.Application.Common.Interfaces;
-using HC.Application.Interfaces;
-using HC.Domain.Dto.Requests;
-using HC.Domain.Dto.Responses;
-using HC.Domain.Entities;
-using Mapster;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 
 namespace HC.Application.Services;
 

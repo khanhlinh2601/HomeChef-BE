@@ -4,7 +4,6 @@ namespace HC.Application.Services;
 public class AuthService : IAuthService
 {
     private readonly ITokenService _tokenService;
-
     private readonly IUserService _userService;
     public AuthService(ITokenService tokenService, IUserService userService)
     {

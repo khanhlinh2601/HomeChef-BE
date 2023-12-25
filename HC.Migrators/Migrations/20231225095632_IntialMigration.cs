@@ -7,31 +7,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace HC.Migrators.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class IntialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "chefs",
-                columns: table => new
-                {
-                    id = table.Column<Guid>(type: "uuid", nullable: false),
-                    created_by = table.Column<Guid>(type: "uuid", nullable: false),
-                    created_on = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    last_modified_by = table.Column<Guid>(type: "uuid", nullable: false),
-                    last_modified_on = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    deleted_on = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    deleted_by = table.Column<Guid>(type: "uuid", nullable: true),
-                    is_deleted = table.Column<bool>(type: "boolean", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("pk_chefs", x => x.id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "orders",
+                name: "order",
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -54,7 +36,7 @@ namespace HC.Migrators.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_orders", x => x.id);
+                    table.PrimaryKey("pk_order", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -158,7 +140,7 @@ namespace HC.Migrators.Migrations
                     table.ForeignKey(
                         name: "fk_feedbacks_orders_order_id",
                         column: x => x.order_id,
-                        principalTable: "orders",
+                        principalTable: "order",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -187,13 +169,13 @@ namespace HC.Migrators.Migrations
                     table.ForeignKey(
                         name: "fk_transaction_orders_order_id",
                         column: x => x.order_id,
-                        principalTable: "orders",
+                        principalTable: "order",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "districts",
+                name: "district",
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -209,9 +191,9 @@ namespace HC.Migrators.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_districts", x => x.id);
+                    table.PrimaryKey("pk_district", x => x.id);
                     table.ForeignKey(
-                        name: "fk_districts_provinces_province_id",
+                        name: "fk_district_provinces_province_id",
                         column: x => x.province_id,
                         principalTable: "provinces",
                         principalColumn: "id",
@@ -219,7 +201,7 @@ namespace HC.Migrators.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "order_vouchers",
+                name: "order_voucher",
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -236,15 +218,15 @@ namespace HC.Migrators.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_order_vouchers", x => x.id);
+                    table.PrimaryKey("pk_order_voucher", x => x.id);
                     table.ForeignKey(
-                        name: "fk_order_vouchers_orders_order_id",
+                        name: "fk_order_voucher_orders_order_id",
                         column: x => x.order_id,
-                        principalTable: "orders",
+                        principalTable: "order",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "fk_order_vouchers_voucher_voucher_id",
+                        name: "fk_order_voucher_voucher_voucher_id",
                         column: x => x.voucher_id,
                         principalTable: "voucher",
                         principalColumn: "id",
@@ -252,14 +234,14 @@ namespace HC.Migrators.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "addresses",
+                name: "address",
                 columns: table => new
                 {
                     id = table.Column<Guid>(type: "uuid", nullable: false),
-                    house_number = table.Column<string>(type: "character varying(1024)", maxLength: 1024, nullable: false),
+                    house_number = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: false),
                     street = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
                     ward = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
-                    description = table.Column<string>(type: "character varying(1024)", maxLength: 1024, nullable: true),
+                    description = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: true),
                     district_id = table.Column<Guid>(type: "uuid", nullable: false),
                     customer_id = table.Column<Guid>(type: "uuid", nullable: false),
                     created_by = table.Column<Guid>(type: "uuid", nullable: false),
@@ -272,11 +254,11 @@ namespace HC.Migrators.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("pk_addresses", x => x.id);
+                    table.PrimaryKey("pk_address", x => x.id);
                     table.ForeignKey(
-                        name: "fk_addresses_districts_district_id",
+                        name: "fk_address_districts_district_id",
                         column: x => x.district_id,
-                        principalTable: "districts",
+                        principalTable: "district",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -294,7 +276,7 @@ namespace HC.Migrators.Migrations
                     table.ForeignKey(
                         name: "fk_district_user_districts_districts_id",
                         column: x => x.districts_id,
-                        principalTable: "districts",
+                        principalTable: "district",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
@@ -306,9 +288,14 @@ namespace HC.Migrators.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "ix_addresses_district_id",
-                table: "addresses",
+                name: "ix_address_district_id",
+                table: "address",
                 column: "district_id");
+
+            migrationBuilder.CreateIndex(
+                name: "ix_district_province_id",
+                table: "district",
+                column: "province_id");
 
             migrationBuilder.CreateIndex(
                 name: "ix_district_user_districts_id",
@@ -316,23 +303,18 @@ namespace HC.Migrators.Migrations
                 column: "districts_id");
 
             migrationBuilder.CreateIndex(
-                name: "ix_districts_province_id",
-                table: "districts",
-                column: "province_id");
-
-            migrationBuilder.CreateIndex(
                 name: "ix_feedbacks_order_id",
                 table: "feedbacks",
                 column: "order_id");
 
             migrationBuilder.CreateIndex(
-                name: "ix_order_vouchers_order_id",
-                table: "order_vouchers",
+                name: "ix_order_voucher_order_id",
+                table: "order_voucher",
                 column: "order_id");
 
             migrationBuilder.CreateIndex(
-                name: "ix_order_vouchers_voucher_id",
-                table: "order_vouchers",
+                name: "ix_order_voucher_voucher_id",
+                table: "order_voucher",
                 column: "voucher_id");
 
             migrationBuilder.CreateIndex(
@@ -345,10 +327,7 @@ namespace HC.Migrators.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "addresses");
-
-            migrationBuilder.DropTable(
-                name: "chefs");
+                name: "address");
 
             migrationBuilder.DropTable(
                 name: "district_user");
@@ -357,13 +336,13 @@ namespace HC.Migrators.Migrations
                 name: "feedbacks");
 
             migrationBuilder.DropTable(
-                name: "order_vouchers");
+                name: "order_voucher");
 
             migrationBuilder.DropTable(
                 name: "transaction");
 
             migrationBuilder.DropTable(
-                name: "districts");
+                name: "district");
 
             migrationBuilder.DropTable(
                 name: "users");
@@ -372,7 +351,7 @@ namespace HC.Migrators.Migrations
                 name: "voucher");
 
             migrationBuilder.DropTable(
-                name: "orders");
+                name: "order");
 
             migrationBuilder.DropTable(
                 name: "provinces");

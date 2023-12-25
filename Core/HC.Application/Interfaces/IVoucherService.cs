@@ -1,10 +1,6 @@
-using HC.Domain.Dto.Requests;
-using HC.Domain.Dto.Responses;
-using HC.Domain.Entities;
-
 namespace HC.Application.Interfaces;
 
-public interface IVoucherService
+public interface IVoucherService : IScopedService
 {
     Task<Guid> Create(CreateVoucherRequest request);
     Task<VoucherResponse> GetById(Guid id);

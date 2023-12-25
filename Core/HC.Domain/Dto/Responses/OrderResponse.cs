@@ -1,5 +1,4 @@
-using HC.Domain.Common.Enums;
-using HC.Domain.Enums;
+
 
 namespace HC.Domain.Dto.Responses;
 
