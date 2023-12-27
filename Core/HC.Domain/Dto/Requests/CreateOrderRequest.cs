@@ -1,7 +1,7 @@
 using HC.Domain.Common.Enums;
 using HC.Domain.Enums;
 
-namespace HC.Domain.Entities;
+namespace HC.Domain.Dto.Requests;
 
 public class CreateOrderRequest
 {

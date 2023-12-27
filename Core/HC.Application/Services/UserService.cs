@@ -13,8 +13,10 @@ public class UserService : IUserService
 
     public async Task<Guid> Create(CreateUserRequest request)
     {
+
         await ValidateUser(request);
-        var entity = request.Adapt<User>();
+        //map config with mapster
+        var entity = request.Adapt<CreateUserRequest, User>();
         await _userRepository.CreateAsync(entity);
         return entity.Id;
     }
@@ -26,9 +28,10 @@ public class UserService : IUserService
         return user.Id;
     }
 
-    public Task<IEnumerable<UserResponse>> GetAll()
+    public async Task<IEnumerable<UserResponse>> GetAll()
     {
-        throw new NotImplementedException();
+        var users = await _userRepository.GetAllAsync();
+        return users.Adapt<IEnumerable<UserResponse>>();
     }
 
     public async Task<UserResponse> GetById(Guid id)
@@ -54,8 +57,7 @@ public class UserService : IUserService
     public async Task<User> GetByEmailAndPhone(string? email, string? phone)
     {
         var user = await _userRepository.GetOneByConditionAsync(
-            expression: x => x.Email == email || x.Phone == phone,
-            new Expression<Func<User, object>>[] { x => x.Role }
+            expression: x => x.Email == email || x.Phone == phone
             );
         return user;
     }

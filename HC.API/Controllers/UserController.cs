@@ -1,5 +1,6 @@
 using HC.Application.Interfaces;
 using HC.Domain.Dto.Requests;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
 
@@ -14,6 +15,7 @@ public class UserController : BaseApiController
     }
 
     [HttpGet]
+    [AllowAnonymous]
     [OpenApiOperation("Get all users", "")]
     public async Task<ActionResult> Get()
     {
@@ -28,6 +30,7 @@ public class UserController : BaseApiController
     }
 
     [HttpPost]
+    [AllowAnonymous]
     [OpenApiOperation("Create user", "")]
     public async Task<ActionResult> Create([FromBody] CreateUserRequest request)
     {
@@ -40,7 +43,7 @@ public class UserController : BaseApiController
     {
         return Ok(await _userService.Update(id, request));
     }
-
+ 
     [HttpDelete("{id}")]
     [OpenApiOperation("Delete user", "")]
     public async Task<ActionResult> Delete(Guid id)

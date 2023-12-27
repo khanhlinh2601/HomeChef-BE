@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HC.Domain.Dto.Requests;
-
+﻿namespace HC.Domain.Dto.Requests;
+using FluentValidation;
 public class CreateAddressRequest
 {
     public string HouseNumber { get; set; } = null!;
@@ -15,3 +9,14 @@ public class CreateAddressRequest
     public Guid CustomerId { get; set; }
 }
 
+public class CreateAddressRequestValidator : AbstractValidator<CreateAddressRequest>
+{
+    public CreateAddressRequestValidator()
+    {
+        RuleFor(x => x.HouseNumber).NotEmpty();
+        RuleFor(x => x.HouseType).NotEmpty();
+        RuleFor(x => x.Ward).NotEmpty();
+        RuleFor(x => x.DistrictId).NotEmpty();
+        RuleFor(x => x.CustomerId).NotEmpty();
+    }
+}

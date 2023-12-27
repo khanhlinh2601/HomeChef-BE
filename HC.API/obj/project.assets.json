@@ -166,6 +166,23 @@
           }
         }
       },
+      "FluentValidation.DependencyInjectionExtensions/11.5.2": {
+        "type": "package",
+        "dependencies": {
+          "FluentValidation": "11.5.2",
+          "Microsoft.Extensions.Dependencyinjection.Abstractions": "2.1.0"
+        },
+        "compile": {
+          "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Google.Api.Gax/3.2.0": {
         "type": "package",
         "dependencies": {
@@ -2527,6 +2544,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
+          "FluentValidation.DependencyInjectionExtensions": "11.5.2",
           "HC.Shared": "1.0.0",
           "Microsoft.AspNetCore.Http.Features": "5.0.17",
           "Newtonsoft.Json": "13.0.3"
@@ -2808,6 +2826,23 @@
         "lib/netstandard2.0/FluentValidation.xml",
         "lib/netstandard2.1/FluentValidation.dll",
         "lib/netstandard2.1/FluentValidation.xml"
+      ]
+    },
+    "FluentValidation.DependencyInjectionExtensions/11.5.2": {
+      "sha512": "ycibtdWdluIx0aTgQvO7Kjd5GjNRpD92z4/hEJc8u1luZ5ff1k0JpwPGmL+YFbPVYFk+A6gYIrVI4QdZfSJJdQ==",
+      "type": "package",
+      "path": "fluentvalidation.dependencyinjectionextensions/11.5.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "fluent-validation-icon.png",
+        "fluentvalidation.dependencyinjectionextensions.11.5.2.nupkg.sha512",
+        "fluentvalidation.dependencyinjectionextensions.nuspec",
+        "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.dll",
+        "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.xml",
+        "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll",
+        "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.xml"
       ]
     },
     "Google.Api.Gax/3.2.0": {
@@ -6797,19 +6832,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\tklin\\.nuget\\packages\\": {}
+    "C:\\Users\\linhtk\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.API\\HC.API.csproj",
+      "projectUniqueName": "D:\\workspace\\fpt\\HomeChef-BE\\HC.API\\HC.API.csproj",
       "projectName": "HC.API",
-      "projectPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.API\\HC.API.csproj",
-      "packagesPath": "C:\\Users\\tklin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.API\\obj\\",
+      "projectPath": "D:\\workspace\\fpt\\HomeChef-BE\\HC.API\\HC.API.csproj",
+      "packagesPath": "C:\\Users\\linhtk\\.nuget\\packages\\",
+      "outputPath": "D:\\workspace\\fpt\\HomeChef-BE\\HC.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\tklin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\linhtk\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6823,14 +6858,14 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Application\\HC.Application.csproj": {
-              "projectPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Application\\HC.Application.csproj"
+            "D:\\workspace\\fpt\\HomeChef-BE\\Core\\HC.Application\\HC.Application.csproj": {
+              "projectPath": "D:\\workspace\\fpt\\HomeChef-BE\\Core\\HC.Application\\HC.Application.csproj"
             },
-            "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.Infrastructure\\HC.Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.Infrastructure\\HC.Infrastructure.csproj"
+            "D:\\workspace\\fpt\\HomeChef-BE\\HC.Infrastructure\\HC.Infrastructure.csproj": {
+              "projectPath": "D:\\workspace\\fpt\\HomeChef-BE\\HC.Infrastructure\\HC.Infrastructure.csproj"
             },
-            "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.Migrators\\HC.Migrators.csproj": {
-              "projectPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.Migrators\\HC.Migrators.csproj"
+            "D:\\workspace\\fpt\\HomeChef-BE\\HC.Migrators\\HC.Migrators.csproj": {
+              "projectPath": "D:\\workspace\\fpt\\HomeChef-BE\\HC.Migrators\\HC.Migrators.csproj"
             }
           }
         }

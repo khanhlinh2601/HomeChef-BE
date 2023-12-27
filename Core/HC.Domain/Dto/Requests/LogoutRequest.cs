@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace HC.Domain.Dto.Requests;
 
-namespace HC.Domain.Dto.Requests
+public class LogoutRequest
 {
-    public class LogoutRequest
-    {
-        public string FcmToken { get; set; }
-    }
+    public string FcmToken { get; set; } = null!;
 }
+
