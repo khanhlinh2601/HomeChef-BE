@@ -113,14 +113,23 @@ namespace HC.Infrastructure.Persistence.Repository
             return entity;
         }
 
-        
+
 
         public async Task<int> UpdateAsync(T entity)
         {
-            _context.Attach(entity).State = EntityState.Modified;
-            int rowsEffect = await _context.SaveChangesAsync();
-            return rowsEffect;
+            var existingEntity = await _context.Set<T>().FindAsync(entity.Id);
+
+            if (existingEntity != null)
+            {
+                _context.Entry(existingEntity).CurrentValues.SetValues(entity);
+                int rowsEffect = await _context.SaveChangesAsync();
+                return rowsEffect;
+            }
+
+            // Handle the case when the entity with the given key is not found.
+            return 0;
         }
+
 
         public async Task<IEnumerable<T>> WhereAsync(Expression<Func<T, bool>> predicate, params string[] navigationProperties)
         {

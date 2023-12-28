@@ -1,5 +1,6 @@
 using HC.Application.Interfaces;
 using HC.Domain.Dto.Requests;
+using HC.Domain.Dto.Responses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NSwag.Annotations;
@@ -17,14 +18,14 @@ public class UserController : BaseApiController
     [HttpGet]
     [AllowAnonymous]
     [OpenApiOperation("Get all users", "")]
-    public async Task<ActionResult> Get()
+    public async Task<ActionResult<IEnumerable<UserResponse>>> Get()
     {
         return Ok(await _userService.GetAll());
     }
 
     [HttpGet("{id}")]
     [OpenApiOperation("Get user by id", "")]
-    public async Task<ActionResult> GetById(Guid id)
+    public async Task<ActionResult<UserResponse>> GetById(Guid id)
     {
         return Ok(await _userService.GetById(id));
     }
@@ -32,7 +33,7 @@ public class UserController : BaseApiController
     [HttpPost]
     [AllowAnonymous]
     [OpenApiOperation("Create user", "")]
-    public async Task<ActionResult> Create([FromBody] CreateUserRequest request)
+    public async Task<ActionResult<Guid>> Create([FromBody] CreateUserRequest request)
     {
         return Ok(await _userService.Create(request));
     }

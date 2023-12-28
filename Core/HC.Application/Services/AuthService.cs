@@ -39,7 +39,7 @@ public class AuthService : IAuthService
             //get info from firebase token
             var email = firebaseToken.Claims.GetValueOrDefault("email")?.ToString();
             var phone = firebaseToken.Claims.GetValueOrDefault("phone_number")?.ToString();
-            var birthday = DateTime.Parse(firebaseToken.Claims.GetValueOrDefault("birthday")?.ToString());
+            //var birthday = DateTime.Parse(firebaseToken.Claims.GetValueOrDefault("birthday")?.ToString());
             var avatar = firebaseToken.Claims.GetValueOrDefault("picture")?.ToString();
             var name = firebaseToken.Claims.GetValueOrDefault("name")?.ToString();
             var user = await _userService.GetByEmailAndPhone(email, phone);
@@ -50,7 +50,7 @@ public class AuthService : IAuthService
                 {
                     Email = email ?? "",
                     Phone = phone ?? "",
-                    Birthday = birthday,
+                    Birthday = DateTime.Now,
                     AvatarUrl = avatar,
                     FullName = name,
                     FcmToken = request.FcmToken,

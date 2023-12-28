@@ -10,7 +10,9 @@ Log.Information("Starting web host");
 try
 {
     var builder = WebApplication.CreateBuilder(args);
-    
+    AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+    AppContext.SetSwitch("Npgsql.DisableDateTimeInfinityConversions", true);
+
     builder.AddConfigurations().RegisterSerilog();
     builder.Services.AddControllers();
     builder.Services.AddInfrastructure(builder.Configuration);

@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using System.Reflection;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.OpenApi.Models;
+using NSwag;
 using NSwag.Generation.AspNetCore;
 using NSwag.Generation.Processors;
 using NSwag.Generation.Processors.Contexts;
-using System.Reflection;
 
 namespace HC.Infrastructure.OpenApi
 {
@@ -45,7 +45,16 @@ namespace HC.Infrastructure.OpenApi
                     return true;
                 }
 
-
+                if (context.OperationDescription.Operation.Security?.Any() != true)
+                {
+                    (context.OperationDescription.Operation.Security ??= new List<OpenApiSecurityRequirement>()).Add(new OpenApiSecurityRequirement
+                {
+                    {
+                        _name,
+                        Array.Empty<string>()
+                    }
+                });
+                }
             }
 
             return true;

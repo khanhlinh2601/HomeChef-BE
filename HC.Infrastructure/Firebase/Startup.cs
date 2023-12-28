@@ -1,5 +1,6 @@
 using FirebaseAdmin;
 using Google.Apis.Auth.OAuth2;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
@@ -7,19 +8,13 @@ namespace HC.Infrastructure.Firebase;
 
 internal static class Startup
 {
-    internal static IServiceCollection AddFirebase(this IServiceCollection services)
+    internal static IServiceCollection AddFirebase(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddOptions<FirebaseSetting>()
-            .BindConfiguration($"FirebaseSettings")
-            .ValidateDataAnnotations();
-
-        services.AddSingleton(sp =>
+        var firebaseSettings = configuration.GetSection(nameof(FirebaseSetting)).Get<FirebaseSetting>();
+        if (firebaseSettings == null) return services;
+        FirebaseApp.Create(new AppOptions
         {
-            var settings = sp.GetRequiredService<IOptions<FirebaseSetting>>().Value;
-            return FirebaseApp.Create(new AppOptions
-            {
-                Credential = GoogleCredential.FromFile(settings.Path)
-            });
+            Credential = GoogleCredential.FromFile(firebaseSettings.Path)
         });
 
         return services;

@@ -40,11 +40,11 @@ internal class TokenService : ITokenService
     private IEnumerable<Claim> GetClaims(UserResponse user) =>
         new List<Claim>
         {
-            new(ClaimTypes.NameIdentifier, user.Id.ToString()),
-            new(ClaimTypes.Email, user.Email!),
-            new(ClaimTypes.Name, user.FullName ?? string.Empty),
-            new(ClaimTypes.MobilePhone, user.Phone ?? string.Empty),
-            new(ClaimTypes.Role, user.Role),
+            new(nameof(ClaimTypes.NameIdentifier), user.Id.ToString()),
+            new(nameof(ClaimTypes.Email), user.Email ?? string.Empty),
+            new(nameof(ClaimTypes.Name), user.FullName ?? string.Empty),
+            new(nameof(ClaimTypes.MobilePhone), user.Phone ?? string.Empty),
+            new(nameof(ClaimTypes.Role), user.Role),
         };
 }
 

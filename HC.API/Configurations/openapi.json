@@ -1,10 +1,10 @@
 {
   "SwaggerSettings": {
     "Enable": true,
-    "Title": ".NET 7 WebAPI - Clean Architecture",
+    "Title": "Home Chef API",
     "Version": "1.0.0",
     "Description": "Clean Architecture Template for .NET 7 WebApi built with Multitenancy Support.",
-    "ContactName": "Mukesh Murugan",
+    "ContactName": "Linh TK",
     "ContactEmail": "hello@codewithmukesh.com",
     "ContactUrl": "https://linkedin.com/in/iammukeshm",
     "License": true,

@@ -1,5 +1,5 @@
 {
-    "FirebaseSettings":{
-        "Path": "firebase.json"
+    "FirebaseSetting":{
+        "Path": "Configurations/firebase.json"
     }
 }

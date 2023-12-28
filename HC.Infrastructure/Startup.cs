@@ -1,6 +1,7 @@
 using HC.Infrastructure.Caching;
 using HC.Infrastructure.Common;
 using HC.Infrastructure.Cors;
+using HC.Infrastructure.Firebase;
 using HC.Infrastructure.Localization;
 using HC.Infrastructure.Mapping;
 using HC.Infrastructure.Middleware;
@@ -22,6 +23,7 @@ public static class Startup
         MapsterSettings.Configure();
         return services
             .AddApiVersioning()
+            .AddFirebase(config)
             .AddAuth(config)
             .AddCaching(config)
             .AddCorsPolicy(config)

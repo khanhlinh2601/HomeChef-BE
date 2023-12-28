@@ -1,5 +1,7 @@
 using HC.Application.Interfaces;
 using HC.Domain.Dto.Requests;
+using HC.Domain.Dto.Responses;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HC.API.Controllers;
@@ -14,45 +16,48 @@ public class AddressController : BaseApiController
     }
 
     [HttpGet("provinces")]
-    public async Task<ActionResult> GetProvinces()
+    [AllowAnonymous]
+    public async Task<ActionResult<IEnumerable<ProvinceResponse>>> GetProvinces()
     {
         return Ok(await _addressService.GetProvinces());
     }
 
     [HttpGet("districts")]
-    public async Task<ActionResult> GetDistricts()
+    [AllowAnonymous]
+    public async Task<ActionResult<IEnumerable<DistrictResponse>>> GetDistricts()
     {
         return Ok(await _addressService.GetDistricts());
     }
 
     [HttpGet("districts/{provinceId}")]
-    public async Task<ActionResult> GetDistrictsByProvinceId(Guid provinceId)
+    [AllowAnonymous]
+    public async Task<ActionResult<IEnumerable<DistrictResponse>>> GetDistrictsByProvinceId(Guid provinceId)
     {
         return Ok(await _addressService.GetDistrictsByProvinceId(provinceId));
     }
     [HttpGet("{id}")]
-    public async Task<ActionResult> GetAddressById(Guid id)
+    public async Task<ActionResult<AddressResponse>> GetAddressById(Guid id)
     {
         return Ok(await _addressService.GetAddressById(id));
     }
     [HttpGet("customers/{userId}")]
-    public async Task<ActionResult> GetAddressesByCustomerId(Guid userId)
+    public async Task<ActionResult<IEnumerable<AddressResponse>>> GetAddressesByCustomerId(Guid userId)
     {
         return Ok(await _addressService.GetAddressesByCustomerId(userId));
     }
     [HttpPost]
-    public async Task<ActionResult> Create([FromBody] CreateAddressRequest request)
+    public async Task<ActionResult<Guid>> Create([FromBody] CreateAddressRequest request)
     {
         return Ok(await _addressService.CreateAddress(request));
     }
     [HttpPut("{id}")]
-    public async Task<ActionResult> Update(Guid id, [FromBody] UpdateAddressRequest request)
+    public async Task<ActionResult<Guid>> Update(Guid id, [FromBody] UpdateAddressRequest request)
     {
         return Ok(await _addressService.UpdateAddress(id, request));
     }
 
     [HttpDelete("{id}")]
-    public async Task<ActionResult> Delete(Guid id)
+    public async Task<ActionResult<Guid>> Delete(Guid id)
     {
         return Ok(await _addressService.DeleteAddress(id));
     }
