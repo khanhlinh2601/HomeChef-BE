@@ -14,10 +14,8 @@ internal static class Startup
         // .AddJwtAuth();
         services.Configure<SecuritySettings>(config.GetSection(nameof(SecuritySettings)));
         return services
-            .AddJwtAuth()
-            .AddCurrentUser();
-
-
+            .AddCurrentUser()
+            .AddJwtAuth();
     }
 
     internal static IApplicationBuilder UseCurrentUser(this IApplicationBuilder app) =>

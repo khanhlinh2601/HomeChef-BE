@@ -9,10 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using HC.Domain.Enums;
 using HC.Domain.Common.Enums;
+using HC.Domain.Common.Interfaces;
 
 namespace HC.Domain.Entities;
 
-public class User : BaseEntity
+public class User : BaseEntity, IAggregateRoot
 {
     public string? Email { get; set; }
     public string? Phone { get; set; }

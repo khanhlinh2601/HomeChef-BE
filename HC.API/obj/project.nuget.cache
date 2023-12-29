@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "bjRF23iVfy3mBk5X69qwgLXswCBWVExR1qWTLa5zDRpxRx1N+rZB8NsiUbuu8GQ6rv30vxsNegBvGHtXdkPLAw==",
+  "dgSpecHash": "VE+Dw01xtSpKoHYmhHYKFWbVavXAsO2zaKMVdPu63okT4skWm9Ec78Mml+xh9It0FHtVFR0uL3MBucojQYiPuA==",
   "success": true,
   "projectFilePath": "D:\\workspace\\fpt\\HomeChef-BE\\HC.API\\HC.API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\linhtk\\.nuget\\packages\\ardalis.specification\\8.0.0\\ardalis.specification.8.0.0.nupkg.sha512",
+    "C:\\Users\\linhtk\\.nuget\\packages\\ardalis.specification.entityframeworkcore\\8.0.0\\ardalis.specification.entityframeworkcore.8.0.0.nupkg.sha512",
     "C:\\Users\\linhtk\\.nuget\\packages\\autowrapper.core\\4.5.1\\autowrapper.core.4.5.1.nupkg.sha512",
     "C:\\Users\\linhtk\\.nuget\\packages\\awssdk.core\\3.7.300.15\\awssdk.core.3.7.300.15.nupkg.sha512",
     "C:\\Users\\linhtk\\.nuget\\packages\\awssdk.s3\\3.7.304.4\\awssdk.s3.3.7.304.4.nupkg.sha512",
