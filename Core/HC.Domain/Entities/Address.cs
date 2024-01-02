@@ -1,8 +1,9 @@
 using HC.Domain.Common;
+using HC.Domain.Common.Interfaces;
 
 namespace HC.Domain.Entities;
 
-public class Address : BaseEntity
+public class Address : BaseEntity, IAggregateRoot
 {
     public string HouseNumber { get; set; } = default!;
     public string Street { get; set; } = default!;

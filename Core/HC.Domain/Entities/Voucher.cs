@@ -1,9 +1,10 @@
 using HC.Domain.Common;
 using HC.Domain.Common.Enums;
+using HC.Domain.Common.Interfaces;
 
 namespace HC.Domain.Entities;
 
-public class Voucher : BaseEntity
+public class Voucher : BaseEntity, IAggregateRoot
 {
     public string Name { get; set; } = null!;
     public string Code { get; set; } = null!;

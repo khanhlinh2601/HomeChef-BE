@@ -1,10 +1,9 @@
-using System.Transactions;
 using HC.Domain.Common;
-using HC.Domain.Common.Enums;
+using HC.Domain.Common.Interfaces;
 
 namespace HC.Domain.Entities;
 
-public class Transaction : BaseEntity
+public class Transaction : BaseEntity, IAggregateRoot
 {
     public double Amount { get; set; }
     public TransactionMethod TransactionMethod { get; set; }

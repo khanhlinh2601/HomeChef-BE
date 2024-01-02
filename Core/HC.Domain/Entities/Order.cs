@@ -1,10 +1,11 @@
 ﻿using HC.Domain.Common;
 using HC.Domain.Common.Enums;
+using HC.Domain.Common.Interfaces;
 using HC.Domain.Enums;
 
 namespace HC.Domain.Entities;
 
-public class Order : BaseEntity
+public class Order : BaseEntity, IAggregateRoot
 {
     public Guid ChefId { get; set; }
     public OrderStatus Status { get; set; } = default!;

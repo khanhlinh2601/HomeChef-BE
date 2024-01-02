@@ -48,8 +48,7 @@ public class UserService : IUserService
 
     public async Task<User> GetByEmailAndPhone(string? email, string? phone)
     {
-        return await _userRepository.FirstOrDefaultAsync(new UserByEmailPhoneSpec(email, phone))
-        ?? throw new NotFoundException(_t["User is not exist"]);
+        return await _userRepository.FirstOrDefaultAsync(new UserByEmailPhoneSpec(email, phone));
     }
 
     public async Task<UserResponse> GetById(Guid id)

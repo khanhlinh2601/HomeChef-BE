@@ -1,7 +1,8 @@
 using HC.Domain.Common;
+using HC.Domain.Common.Interfaces;
 
 namespace HC.Domain.Entities;
-public class OrderVoucher : BaseEntity
+public class OrderVoucher : BaseEntity, IAggregateRoot
 {
     public Guid OrderId { get; set; }
     public Order Order { get; set; } = default!;

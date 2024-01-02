@@ -1,8 +1,11 @@
+using HC.Application.Common.Persistence;
+using HC.Application.Specification;
+
 namespace HC.Application.Services;
 
 public class OrderService : IOrderService
 {
-    private readonly IGenericRepository<Order> _orderRepository;
+    private readonly IRepository<Order> _orderRepository;
     private readonly IVoucherOrderService _voucherOrderService;
     private readonly IVoucherService _voucherService;
     private readonly ITransactionService _transactionService;
@@ -10,13 +13,7 @@ public class OrderService : IOrderService
     private readonly ICurrentUser _currentUser;
     private readonly IUserService _userService;
 
-    public OrderService(IGenericRepository<Order> orderRepository,
-        IVoucherOrderService voucherOrderService,
-        IVoucherService voucherService,
-        ITransactionService transactionService,
-        INotificationService notificationService,
-        ICurrentUser currentUser,
-        IUserService userService)
+    public OrderService(IRepository<Order> orderRepository, IVoucherOrderService voucherOrderService, IVoucherService voucherService, ITransactionService transactionService, INotificationService notificationService, ICurrentUser currentUser, IUserService userService)
     {
         _orderRepository = orderRepository;
         _voucherOrderService = voucherOrderService;
@@ -42,7 +39,7 @@ public class OrderService : IOrderService
 
         var transaction = await _transactionService.Create(entity);
         entity.Transactions.Add(transaction);
-        await _orderRepository.CreateAsync(entity);
+        await _orderRepository.AddAsync(entity);
 
         var fcmTokens = await _userService.GetFcmToken(_currentUser.GetUserId());
         await _notificationService.SendNotificationMultiDeviceAsync(fcmTokens, "Order", "Your order is created");
@@ -69,25 +66,25 @@ public class OrderService : IOrderService
 
     public async Task<IEnumerable<OrderResponse>> GetAll()
     {
-        var entities = await _orderRepository.GetAllAsync();
+        var entities = await _orderRepository.ListAsync();
 
         return entities.Adapt<IEnumerable<OrderResponse>>();
     }
     public async Task<IEnumerable<OrderResponse>> GetOrderByCustomerId(Guid customerId)
     {
-        var entities = await _orderRepository.WhereAsync(x => x.CreatedBy == customerId);
+        var entities = await _orderRepository.ListAsync(new OrderByCustomerIdSpec(customerId));
         return entities.Adapt<IEnumerable<OrderResponse>>();
     }
 
     public async Task<IEnumerable<OrderResponse>> GetOrderByChefId(Guid chefId)
     {
-        var entities = await _orderRepository.WhereAsync(x => x.ChefId == chefId);
+        var entities = await _orderRepository.ListAsync(new OrderByChefIdSpec(chefId));
         return entities.Adapt<IEnumerable<OrderResponse>>();
     }
     public async Task<Guid> Delete(Guid id)
     {
-        await GetOrderById(id);
-        await _orderRepository.DeleteAsync(id);
+        var entity = await GetOrderById(id);
+        await _orderRepository.DeleteAsync(entity);
         return id;
     }
     public async Task<Guid> Update(Guid id, UpdateOrderRequest request)

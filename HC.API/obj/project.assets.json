@@ -6910,19 +6910,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\linhtk\\.nuget\\packages\\": {}
+    "C:\\Users\\tklin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\workspace\\fpt\\HomeChef-BE\\HC.API\\HC.API.csproj",
+      "projectUniqueName": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.API\\HC.API.csproj",
       "projectName": "HC.API",
-      "projectPath": "D:\\workspace\\fpt\\HomeChef-BE\\HC.API\\HC.API.csproj",
-      "packagesPath": "C:\\Users\\linhtk\\.nuget\\packages\\",
-      "outputPath": "D:\\workspace\\fpt\\HomeChef-BE\\HC.API\\obj\\",
+      "projectPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.API\\HC.API.csproj",
+      "packagesPath": "C:\\Users\\tklin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\linhtk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\tklin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6936,14 +6936,14 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "D:\\workspace\\fpt\\HomeChef-BE\\Core\\HC.Application\\HC.Application.csproj": {
-              "projectPath": "D:\\workspace\\fpt\\HomeChef-BE\\Core\\HC.Application\\HC.Application.csproj"
+            "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Application\\HC.Application.csproj": {
+              "projectPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\Core\\HC.Application\\HC.Application.csproj"
             },
-            "D:\\workspace\\fpt\\HomeChef-BE\\HC.Infrastructure\\HC.Infrastructure.csproj": {
-              "projectPath": "D:\\workspace\\fpt\\HomeChef-BE\\HC.Infrastructure\\HC.Infrastructure.csproj"
+            "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.Infrastructure\\HC.Infrastructure.csproj": {
+              "projectPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.Infrastructure\\HC.Infrastructure.csproj"
             },
-            "D:\\workspace\\fpt\\HomeChef-BE\\HC.Migrators\\HC.Migrators.csproj": {
-              "projectPath": "D:\\workspace\\fpt\\HomeChef-BE\\HC.Migrators\\HC.Migrators.csproj"
+            "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.Migrators\\HC.Migrators.csproj": {
+              "projectPath": "C:\\Users\\tklin\\OneDrive\\Desktop\\HomeChef-BE\\HC.Migrators\\HC.Migrators.csproj"
             }
           }
         }
