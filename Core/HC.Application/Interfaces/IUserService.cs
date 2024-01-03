@@ -11,5 +11,7 @@ public interface IUserService : IScopedService
     Task<User> GetByEmailAndPhone(string? email, string? phone);
     Task<IEnumerable<UserResponse>> GetAll();
     Task<List<string>> GetFcmToken(Guid id);
+    Task<IEnumerable<UserResponse>> GetAllChef();
+    Task<IEnumerable<UserResponse>> GetAllCustomer();
 }
 

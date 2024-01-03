@@ -41,8 +41,12 @@ public class OrderService : IOrderService
         entity.Transactions.Add(transaction);
         await _orderRepository.AddAsync(entity);
 
-        var fcmTokens = await _userService.GetFcmToken(_currentUser.GetUserId());
-        await _notificationService.SendNotificationMultiDeviceAsync(fcmTokens, "Order", "Your order is created");
+        await _notificationService.CreateAsync(new Notification
+        {
+            Title = "New order",
+            Description = $"You have a new order ",
+            ReceiverId = _currentUser.GetUserId(),
+        });
         return entity.Id;
     }
     public async Task<OrderResponse> GetById(Guid id)

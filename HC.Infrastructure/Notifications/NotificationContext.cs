@@ -1,9 +1,9 @@
 ﻿using FirebaseAdmin.Messaging;
 using HC.Application.Common.Interfaces;
 
-namespace HC.Application.Services;
+namespace HC.Infrastructure.Services;
 
-public class NotificationService : INotificationService
+public class NotificationContext : INotificationContext
 {
     public async Task<string> SendNotificationMultiDeviceAsync(List<string> fcmTokens, string title, string content)
     {
@@ -18,6 +18,7 @@ public class NotificationService : INotificationService
 
         };
         BatchResponse response = await FirebaseMessaging.DefaultInstance.SendMulticastAsync(message);
+        
         return response.SuccessCount.ToString();
     }
     public async Task<string> SendNotificationOneDeviceAsync(string fcmToken, string title, string content)

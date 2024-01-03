@@ -51,4 +51,20 @@ public class UserController : BaseApiController
     {
         return Ok(await _userService.Delete(id));
     }
+
+    [HttpGet("chef")]
+    [AllowAnonymous]
+    [OpenApiOperation("Get all chefs", "")]
+    public async Task<ActionResult<IEnumerable<UserResponse>>> GetChefs()
+    {
+        return Ok(await _userService.GetAllChef());
+    }
+
+    [HttpGet("customer")]
+    [AllowAnonymous]
+    [OpenApiOperation("Get all customers", "")]
+    public async Task<ActionResult<IEnumerable<UserResponse>>> GetCustomers()
+    {
+        return Ok(await _userService.GetAllCustomer());
+    }
 }

@@ -1,4 +1,5 @@
-﻿using HC.Domain.Common;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using HC.Domain.Common;
 using HC.Domain.Common.Interfaces;
 
 namespace HC.Domain.Entities;

@@ -7,19 +7,48 @@ using Microsoft.Extensions.Logging;
 
 namespace HC.Infrastructure.Catalog;
 
-public class DistrictSeeder : ICustomSeeder
+public class ProvinceSeeder : ICustomSeeder
 {
     private readonly ISerializerService _serializerService;
     private readonly ApplicationDbContext _db;
-    private readonly ILogger<DistrictSeeder> _logger;
+    private readonly ILogger<ProvinceSeeder> _logger;
 
-    public DistrictSeeder(ISerializerService serializerService, ApplicationDbContext db, ILogger<DistrictSeeder> logger)
+    public ProvinceSeeder(ISerializerService serializerService, ApplicationDbContext db, ILogger<ProvinceSeeder> logger)
     {
         _serializerService = serializerService;
         _db = db;
         _logger = logger;
     }
+
     public async Task InitializeAsync(CancellationToken cancellationToken)
+    {
+        string? path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        if (!_db.Provinces.Any())
+        {
+            _logger.LogInformation("Started to Seed province.");
+
+            // Here you can use your own logic to populate the database.
+            // As an example, I am using a JSON file to populate the database.
+            string provinceData = await File.ReadAllTextAsync(path + "/Catalog/provinces.json", cancellationToken);
+            var provinces = _serializerService.Deserialize<List<Province>>(provinceData);
+
+            if (provinces != null)
+            {
+                foreach (var province in provinces)
+                {
+                    await _db.Provinces.AddAsync(province, cancellationToken);
+                }
+            }
+
+
+
+            await _db.SaveChangesAsync(cancellationToken);
+            _logger.LogInformation("Seeded province.");
+            await SeedDistrictsAsync(cancellationToken);
+        }
+    }
+
+    private async Task SeedDistrictsAsync(CancellationToken cancellationToken)
     {
         string? path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
         if (!_db.Districts.Any())
@@ -42,9 +71,5 @@ public class DistrictSeeder : ICustomSeeder
             await _db.SaveChangesAsync(cancellationToken);
             _logger.LogInformation("Seeded district.");
         }
-         
-
-
-
     }
 }

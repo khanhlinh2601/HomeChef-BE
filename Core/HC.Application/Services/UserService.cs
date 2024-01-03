@@ -15,14 +15,15 @@ public class UserService : IUserService
             throw new ConflictException("User is already exist");
         }
     }
-
+    private readonly IFeedbackService _feedbackService;
     private readonly IRepository<User> _userRepository;
     private readonly IStringLocalizer _t;
 
-    public UserService(IRepository<User> userRepository, IStringLocalizer<UserService> t)
+    public UserService(IRepository<User> userRepository, IStringLocalizer<UserService> t, IFeedbackService feedbackService)
     {
         _userRepository = userRepository;
         _t = t;
+        _feedbackService = feedbackService;
     }
     public async Task<Guid> Create(CreateUserRequest request)
     {
@@ -46,6 +47,25 @@ public class UserService : IUserService
         return users.Adapt<IEnumerable<UserResponse>>();
     }
 
+    public async Task<IEnumerable<UserResponse>> GetAllChef()
+    {
+        var users = await _userRepository.ListAsync(new UserByRoleSpec(Role.CHEF));
+        var response = users.Adapt<IEnumerable<UserResponse>>();
+        foreach (var user in response)
+        {
+            user.Feedbacks = await _feedbackService.GetByChefId(user.Id);
+            user.Rating = user.Feedbacks.Average(x => x.Rating);
+            user.TotalFeedback = user.Feedbacks.Count();
+        }
+        return response;
+    }
+
+    public async Task<IEnumerable<UserResponse>> GetAllCustomer()
+    {
+        var users = await _userRepository.ListAsync(new UserByRoleSpec(Role.CUSTOMER));
+        return users.Adapt<IEnumerable<UserResponse>>();
+    }
+
     public async Task<User> GetByEmailAndPhone(string? email, string? phone)
     {
         return await _userRepository.FirstOrDefaultAsync(new UserByEmailPhoneSpec(email, phone));
@@ -55,7 +75,16 @@ public class UserService : IUserService
     {
         var user = await _userRepository.GetByIdAsync(id);
         _ = user ?? throw new NotFoundException(_t["User is not exist"]);
-        return user.Adapt<UserResponse>();
+        
+        var response =  user.Adapt<UserResponse>();
+
+        if (user.Role == Role.CHEF)
+        {
+            response.Feedbacks = await _feedbackService.GetByChefId(response.Id);
+            response.Rating = response.Feedbacks.Average(x => x.Rating);
+            response.TotalFeedback = response.Feedbacks.Count();
+        }
+        return response;
     }
 
     public async Task<List<string>> GetFcmToken(Guid id)

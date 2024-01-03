@@ -1,3 +1,77 @@
 [
-    
+  {
+    "Name": "Thủ Đức",
+    "Id": "7fcf75c0-cb8e-4fc3-9a5a-e70a83a7a066",
+    "ProvinceId": "7fcf75c0-cb8e-4fc3-9a5a-e70a83a7a066"
+  },
+  {
+    "Name": "Quận 1",
+    "Id": "46a6d8b8-9f1d-4f91-8b93-49c06f05d6f1",
+    "ProvinceId": "7fcf75c0-cb8e-4fc3-9a5a-e70a83a7a066"
+  },
+  {
+    "Name": "Quận 2",
+    "Id": "98a374e3-1d1b-4a3d-8e4f-15be9e99d3f2",
+    "ProvinceId": "7fcf75c0-cb8e-4fc3-9a5a-e70a83a7a066"
+  },
+  {
+    "Name": "Bình Thạnh",
+    "Id": "2cb90e53-91bf-47e7-bab7-9a6c3b46a1ac",
+    "ProvinceId": "7fcf75c0-cb8e-4fc3-9a5a-e70a83a7a066"
+  },
+  {
+    "Name": "Quận 3",
+    "Id": "03b430db-565c-4465-8d48-165c86ad89e3",
+    "ProvinceId": "7fcf75c0-cb8e-4fc3-9a5a-e70a83a7a066"
+  },
+  {
+    "Name": "Quận 4",
+    "Id": "1fa35f76-5e3a-4a0d-9099-c055c7ad2285",
+    "ProvinceId": "7fcf75c0-cb8e-4fc3-9a5a-e70a83a7a066"
+  },
+  {
+    "Name": "Quận 5",
+    "Id": "eb59cbe6-36f1-4a16-92c2-1f144a74e3fb",
+    "ProvinceId": "7fcf75c0-cb8e-4fc3-9a5a-e70a83a7a066"
+  },
+  {
+    "Name": "Quận 6",
+    "Id": "8cda9f1c-c28a-4cc4-b1f5-08a78a03d8c5",
+    "ProvinceId": "7fcf75c0-cb8e-4fc3-9a5a-e70a83a7a066"
+  },
+  {
+    "Name": "Quận 7",
+    "Id": "e1248ff6-9a90-4d4e-b8c0-19f0b6c0573a",
+    "ProvinceId": "7fcf75c0-cb8e-4fc3-9a5a-e70a83a7a066"
+  },
+  {
+    "Name": "Quận 8",
+    "Id": "eddb05c4-2b1f-4c6b-84d4-b1793e9659b9",
+    "ProvinceId": "7fcf75c0-cb8e-4fc3-9a5a-e70a83a7a066"
+  },
+  {
+    "Name": "Quận 9",
+    "Id": "65b5b48c-3d2f-48d7-97f0-50a73a1fb0c7",
+    "ProvinceId": "7fcf75c0-cb8e-4fc3-9a5a-e70a83a7a066"
+  },
+  {
+    "Name": "Quận 10",
+    "Id": "1552d7cc-66f0-4ec2-83a7-72ea967e6eaf",
+    "ProvinceId": "7fcf75c0-cb8e-4fc3-9a5a-e70a83a7a066"
+  },
+  {
+    "Name": "Quận 11",
+    "Id": "9df1cf2b-e83c-4e1a-862a-dc8fb73b7a66",
+    "ProvinceId": "7fcf75c0-cb8e-4fc3-9a5a-e70a83a7a066"
+  },
+  {
+    "Name": "Quận 12",
+    "Id": "a6a330cc-c697-41a7-94e3-4c0ec711b991",
+    "ProvinceId": "7fcf75c0-cb8e-4fc3-9a5a-e70a83a7a066"
+  },
+  {
+    "Name": "Bình Tân",
+    "Id": "f51e1185-2f61-4ebf-8655-cdbce3d9182f",
+    "ProvinceId": "7fcf75c0-cb8e-4fc3-9a5a-e70a83a7a066"
+  }
 ]
