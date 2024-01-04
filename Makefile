@@ -9,7 +9,7 @@ nuget:
 publish:
 	dotnet publish -c Release
 publish-to-hub:
-	dotnet publish -c Release -p:ContainerRegistry=docker.io -p:ContainerImageName=iammukeshm/dotnet-webapi
+	dotnet publish -c Release -p:ContainerRegistry=docker.io -p:ContainerImageName=klt2601/homechef-api
 tp: # terraform plan
 	cd terraform/environments/staging && terraform plan
 ta: # terraform apply
@@ -17,9 +17,9 @@ ta: # terraform apply
 td: # terraform destroy
 	cd terraform/environments/staging && terraform destroy
 dcu: # docker-compose up : webapi + postgresql
-	cd docker-compose/ && docker-compose -f docker-compose.postgresql.yml up -d
+	cd docker-compose/ && docker-compose -f docker-compose.yml up -d
 dcd: # docker-compose down : webapi + postgresql
-	cd docker-compose/ && docker-compose -f docker-compose.postgresql.yml down
+	cd docker-compose/ && docker-compose -f docker-compose.yml down
 fds: # force rededeploy aws ecs service
 	aws ecs update-service --force-new-deployment --service dotnet-webapi --cluster fullstackhero
 gw: # git docker workflow to push docker image to the repository based on the main branch

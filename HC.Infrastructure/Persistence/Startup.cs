@@ -24,7 +24,7 @@ internal static class Startup
             .BindConfiguration(nameof(DatabaseSettings))
             .PostConfigure(databaseSettings =>
             {
-                _logger.Information("Current DB Provider: PostgreSql");
+                _logger.Information("Current DB Provider: PostgreSql1111");
             })
             .ValidateDataAnnotations();
 
